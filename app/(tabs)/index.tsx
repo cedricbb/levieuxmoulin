@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import { useContent } from '@/hooks/useContent';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import ErrorScreen from '@/components/ui/ErrorScreen';
+import { images } from '../../assets/images/images';
 
 export default function HomeScreen() {
   const { content, isLoading, error } = useContent('home');
@@ -13,7 +14,7 @@ export default function HomeScreen() {
     <ScrollView style={styles.container}>
       <View style={styles.heroContainer}>
         <Image 
-          source={{ uri: '../../assets/images/3-Chalet-vu-du-pont.jpg' }} 
+          source={images.chaletVuDuPont} 
           style={styles.heroImage}
           resizeMode="cover"
         />
@@ -49,7 +50,7 @@ export default function HomeScreen() {
         </View>
         
         <Image 
-          source={{ uri: '../../assets/images/3-Chalet-vu-du-pont.jpg' }} 
+          source={images.chaletVuDeFace} 
           style={styles.secondaryImage}
           resizeMode="cover"
         />

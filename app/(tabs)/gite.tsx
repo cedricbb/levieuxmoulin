@@ -4,6 +4,7 @@ import LoadingScreen from '@/components/ui/LoadingScreen';
 import ErrorScreen from '@/components/ui/ErrorScreen';
 import { useState } from 'react';
 import GiteDescription from '@/components/pages/GiteDescription';
+import GiteEquipements from '@/components/pages/GiteEquipements';
 
 type GiteTab = 'description' | 'equipements';
 
@@ -41,15 +42,6 @@ export default function GiteScreen() {
           <GiteEquipements />
         )}
       </ScrollView>
-    </View>
-  );
-}
-
-function GiteEquipements() {
-  return (
-    <View>
-      <Text style={styles.subTitle}>Équipements</Text>
-      <Text style={styles.text}></Text>
     </View>
   );
 }
