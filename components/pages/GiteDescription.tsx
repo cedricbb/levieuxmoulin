@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import GiteItem from "../card/GiteItem";
 import GiteItemWithoutBullet from "../card/GitItemWithoutBullet";
+import Spacer from "../ui/Spacer";
 
 export default function GiteDescription() {
   return (
@@ -41,6 +42,7 @@ export default function GiteDescription() {
           Conférences (50 personnes)
         `}
       />
+      <Spacer size={24} />
     </View>
   );
 }

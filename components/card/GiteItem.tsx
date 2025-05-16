@@ -20,7 +20,7 @@ export default function GiteItem({ description }: { description: string }) {
 
 const styles = StyleSheet.create({
     giteItem: {
-      marginBottom: 24,
+      marginBottom: 12,
       backgroundColor: '#FFFFFF',
       borderRadius: 8,
       padding: 12,
