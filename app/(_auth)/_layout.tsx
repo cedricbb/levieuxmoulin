@@ -17,8 +17,6 @@ export default function AuthLayout() {
     
     if (inAdminSegment && !isAuthenticated) {
       router.replace('/login');
-    } else if (!inAdminSegment && segments[0] === 'login' && isAuthenticated) {
-      router.replace('/(admin)');
     }
   }, [isAuthenticated, segments, isLoading]);
 

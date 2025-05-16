@@ -1,11 +1,14 @@
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Button } from 'react-native';
 import { useContent } from '@/hooks/useContent';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import ErrorScreen from '@/components/ui/ErrorScreen';
 import { images } from '../../assets/images/images';
+import { router } from 'expo-router';
+import { useAuthContext } from '@/contexts/AuthContext';
 
 export default function HomeScreen() {
   const { content, isLoading, error } = useContent('home');
+  const { isAuthenticated } = useAuthContext();
   
   if (isLoading) return <LoadingScreen />;
   if (error) return <ErrorScreen message={error} />;
@@ -59,6 +62,18 @@ export default function HomeScreen() {
           Que ce soit pour des vacances en famille, ou entre amis, 
           Le Vieux Moulin vous accueille pour un séjour inoubliable au cœur des montagnes.
         </Text>
+        {isAuthenticated && (
+        <Button
+          title="Administration"
+          onPress={() => router.push('/(admin)')}
+        />
+      )}
+      {isAuthenticated && (
+          <Button
+            title="Administration"
+            onPress={() => router.push('/(admin)')}
+          />
+        )}
       </View>
     </ScrollView>
   );
