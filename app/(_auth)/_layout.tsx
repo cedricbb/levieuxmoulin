@@ -12,11 +12,15 @@ export default function AuthLayout() {
     // Skip this effect if we're still loading
     if (isLoading) return;
     
-    // Check if the path is in the admin segment and redirect if not authenticated
+    // Check if the path is in the admin segment
     const inAdminSegment = segments[0] === '(admin)';
     
     if (inAdminSegment && !isAuthenticated) {
+      // Only redirect to login if trying to access admin area
       router.replace('/login');
+    } else if (!inAdminSegment && isAuthenticated) {
+      // If authenticated and not in admin, allow normal navigation
+      router.replace('/(tabs)');
     }
   }, [isAuthenticated, segments, isLoading]);
 

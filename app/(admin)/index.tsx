@@ -11,6 +11,10 @@ export default function AdminDashboard() {
     await logout();
     router.replace('/login');
   };
+
+  const userview = () => {
+    router.replace('/(tabs)');
+  };
   
   return (
     <ScrollView style={styles.container}>
@@ -96,6 +100,10 @@ export default function AdminDashboard() {
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <LogOut size={20} color="#FFFFFF" />
         <Text style={styles.logoutButtonText}>Déconnexion</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.logoutButton} onPress={userview}>
+        <LogOut size={20} color="#FFFFFF" />
+        <Text style={styles.logoutButtonText}>Voir le site</Text>
       </TouchableOpacity>
     </ScrollView>
   );
