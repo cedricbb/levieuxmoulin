@@ -1,12 +1,13 @@
 import { Stack } from 'expo-router';
 import { useAuthContext } from '@/contexts/AuthContext';
 import { useEffect } from 'react';
-import { useRouter, useSegments } from 'expo-router';
+import { useRouter} from 'expo-router';
+import { TouchableOpacity } from 'react-native';
+import { Feather } from 'lucide-react-native';
 
 export default function AdminLayout() {
   const { isAuthenticated, isLoading } = useAuthContext();
   const router = useRouter();
-  const segments = useSegments();
 
   useEffect(() => {
     // Skip this effect during loading
@@ -75,6 +76,21 @@ export default function AdminLayout() {
         options={{ 
           title: 'Modifier Infos',
           headerShown: true,
+        }} 
+      />
+      <Stack.Screen 
+        name="index" 
+        options={{ 
+          title: 'Administration',
+          headerShown: true,
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => router.push('/')}
+              style={{ marginRight: 15 }}
+            >
+              <Feather size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          ),
         }} 
       />
     </Stack>

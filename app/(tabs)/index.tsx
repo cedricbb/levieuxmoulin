@@ -1,81 +1,95 @@
-import { View, Text, StyleSheet, Image, ScrollView, Button } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Button, TouchableOpacity } from 'react-native';
 import { useContent } from '@/hooks/useContent';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import ErrorScreen from '@/components/ui/ErrorScreen';
 import { images } from '../../assets/images/images';
 import { router } from 'expo-router';
 import { useAuthContext } from '@/contexts/AuthContext';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Feather } from 'lucide-react-native';
 
 export default function HomeScreen() {
   const { content, isLoading, error } = useContent('home');
   const { isAuthenticated } = useAuthContext();
+  const insets = useSafeAreaInsets();
   
   if (isLoading) return <LoadingScreen />;
   if (error) return <ErrorScreen message={error} />;
 
+  const handleAdminPress = () => {
+    if (isAuthenticated) {
+      router.push('/(admin)');
+    } else {
+      router.push('/login')
+    }
+  }
+
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.heroContainer}>
-        <Image 
-          source={images.chaletVuDuPont} 
-          style={styles.heroImage}
-          resizeMode="cover"
-        />
-        <View style={styles.heroOverlay}>
-          <Text style={styles.heroTitle}>Le Vieux Moulin</Text>
-          <Text style={styles.heroSubtitle}>Chinaillon</Text>
-        </View>
-      </View>
-      
-      <View style={styles.contentContainer}>
-        <Text style={styles.welcomeTitle}>Bienvenue au Vieux Moulin</Text>
-        <Text style={styles.welcomeText}>
-          Niché au cœur du Grand-Bornand Chinaillon, notre gîte authentique vous propose 
-          un séjour inoubliable dans un cadre chaleureux et montagnard. Profitez de la 
-          beauté des Alpes françaises dans ce havre de paix traditionnel et confortable.
-        </Text>
-        
-        <View style={styles.highlightsContainer}>
-          <View style={styles.highlightItem}>
-            <Text style={styles.highlightTitle}>Authenticité</Text>
-            <Text style={styles.highlightText}>Un gîte de caractère aux traditions savoyardes préservées</Text>
-          </View>
-          
-          <View style={styles.highlightItem}>
-            <Text style={styles.highlightTitle}>Confort</Text>
-            <Text style={styles.highlightText}>Des équipements modernes dans un écrin traditionnel</Text>
-          </View>
-          
-          <View style={styles.highlightItem}>
-            <Text style={styles.highlightTitle}>Emplacement</Text>
-            <Text style={styles.highlightText}>Idéalement situé pour profiter des activités en toutes saisons</Text>
-          </View>
-        </View>
-        
-        <Image 
-          source={images.chaletVuDeFace} 
-          style={styles.secondaryImage}
-          resizeMode="cover"
-        />
-        
-        <Text style={styles.closingText}>
-          Que ce soit pour des vacances en famille, ou entre amis, 
-          Le Vieux Moulin vous accueille pour un séjour inoubliable au cœur des montagnes.
-        </Text>
-        {isAuthenticated && (
-        <Button
-          title="Administration"
-          onPress={() => router.push('/(admin)')}
-        />
-      )}
-      {isAuthenticated && (
-          <Button
-            title="Administration"
-            onPress={() => router.push('/(admin)')}
+    <SafeAreaView style={{flex:1}}>
+      <ScrollView style={styles.container}>
+        <View style={styles.heroContainer}>
+          <Image 
+            source={images.chaletVuDuPont} 
+            style={styles.heroImage}
+            resizeMode="cover"
           />
-        )}
-      </View>
-    </ScrollView>
+          <View style={styles.heroOverlay}>
+            <Text style={styles.heroTitle}>Le Vieux Moulin</Text>
+            <Text style={styles.heroSubtitle}>Chinaillon</Text>
+          </View>
+        </View>
+        
+        <View style={styles.contentContainer}>
+          <Text style={styles.welcomeTitle}>Bienvenue au Vieux Moulin</Text>
+          <Text style={styles.welcomeText}>
+            Niché au cœur du Grand-Bornand Chinaillon, notre gîte authentique vous propose 
+            un séjour inoubliable dans un cadre chaleureux et montagnard. Profitez de la 
+            beauté des Alpes françaises dans ce havre de paix traditionnel et confortable.
+          </Text>
+          
+          <View style={styles.highlightsContainer}>
+            <View style={styles.highlightItem}>
+              <Text style={styles.highlightTitle}>Authenticité</Text>
+              <Text style={styles.highlightText}>Un gîte de caractère aux traditions savoyardes préservées</Text>
+            </View>
+            
+            <View style={styles.highlightItem}>
+              <Text style={styles.highlightTitle}>Confort</Text>
+              <Text style={styles.highlightText}>Des équipements modernes dans un écrin traditionnel</Text>
+            </View>
+            
+            <View style={styles.highlightItem}>
+              <Text style={styles.highlightTitle}>Emplacement</Text>
+              <Text style={styles.highlightText}>Idéalement situé pour profiter des activités en toutes saisons</Text>
+            </View>
+          </View>
+          
+          <Image 
+            source={images.chaletVuDeFace} 
+            style={styles.secondaryImage}
+            resizeMode="cover"
+          />
+          
+          <Text style={styles.closingText}>
+            Que ce soit pour des vacances en famille, ou entre amis, 
+            Le Vieux Moulin vous accueille pour un séjour inoubliable au cœur des montagnes.
+          </Text>
+        </View>
+      </ScrollView>
+      <TouchableOpacity
+        style={[
+          styles.adminButton,
+          { top: insets.top + 10},
+          isAuthenticated ? styles.adminButtonActive : {}
+        ]}
+        onPress={handleAdminPress}
+        >
+          <Feather  
+          size={24} 
+          color={isAuthenticated ? "#8B5A2B" : "#fff"} 
+        />
+        </TouchableOpacity>
+    </SafeAreaView>
   );
 }
 
@@ -165,4 +179,24 @@ const styles = StyleSheet.create({
     color: '#5D4037',
     marginBottom: 24,
   },
+  adminButton: {
+    position: 'absolute',
+    right: 15,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    borderRadius: 25,
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    zIndex: 1000,
+  },
+  adminButtonActive: {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    borderWidth: 2,
+    borderColor: '#8B5A2B',
+  }
 });
