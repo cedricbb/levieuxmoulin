@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter, useSegments } from 'expo-router';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -20,9 +21,10 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+  const segments = useSegments();
   
   useEffect(() => {
-    // Check if user is authenticated on app load
     const checkAuthStatus = async () => {
       try {
         const token = await AsyncStorage.getItem('auth_token');
@@ -38,13 +40,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
   
   const login = async (email: string, password: string) => {
-    // In a real app, you would call an API to authenticate
-    // For this demo, we'll simulate a successful login with valid credentials
-    
-    // Simple mock authentication
     if (email === 'admin@levieuxmoulin.fr' && password === 'admin123') {
       await AsyncStorage.setItem('auth_token', 'mock_token');
       setIsAuthenticated(true);
+      router.replace('/(admin)');
       return;
     }
     
@@ -54,6 +53,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logout = async () => {
     await AsyncStorage.removeItem('auth_token');
     setIsAuthenticated(false);
+    router.replace('/(tabs)');
   };
   
   return (

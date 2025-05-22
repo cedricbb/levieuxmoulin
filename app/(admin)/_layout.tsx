@@ -1,24 +1,18 @@
 import { Stack } from 'expo-router';
 import { useAuthContext } from '@/contexts/AuthContext';
 import { useEffect } from 'react';
-import { useRouter, useSegments } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 export default function AdminLayout() {
   const { isAuthenticated, isLoading } = useAuthContext();
   const router = useRouter();
-  const segments = useSegments();
 
   useEffect(() => {
-    // Skip this effect during loading
-    if (isLoading) return;
-    
-    // If user is not authenticated, redirect to login
-    if (!isAuthenticated) {
+    if (!isLoading && !isAuthenticated) {
       router.replace('/login');
     }
   }, [isAuthenticated, isLoading]);
 
-  // Don't render anything until authentication check is complete
   if (isLoading || !isAuthenticated) {
     return null;
   }
@@ -33,8 +27,7 @@ export default function AdminLayout() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-      }}
-    >
+      }}>
       <Stack.Screen 
         name="index" 
         options={{ 
