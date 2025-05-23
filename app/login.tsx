@@ -1,33 +1,47 @@
-import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { useAuth } from '@/hooks/useAuth';
-import { Eye, EyeOff } from 'lucide-react-native';
+import { useState } from 'react'
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from 'react-native'
+import { useAuth } from '@/hooks/useAuth'
+import { Eye, EyeOff } from 'lucide-react-native'
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const { login } = useAuth();
-  
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const { login } = useAuth()
+
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Erreur', 'Veuillez entrer votre email et votre mot de passe.');
-      return;
+      Alert.alert(
+        'Erreur',
+        'Veuillez entrer votre email et votre mot de passe.',
+      )
+      return
     }
-    
-    setIsLoading(true);
-    
+
+    setIsLoading(true)
+
     try {
-      await login(email, password);
+      await login(email, password)
       // Navigation to admin is handled in the AuthContext
     } catch (error) {
-      Alert.alert('Erreur de connexion', 'Email ou mot de passe incorrect');
+      Alert.alert('Erreur de connexion', 'Email ou mot de passe incorrect')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
-  
+  }
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -36,18 +50,20 @@ export default function LoginScreen() {
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.logoContainer}>
-          <Image 
-            source={{ uri: 'https://images.pexels.com/photos/3288102/pexels-photo-3288102.png' }}
+          <Image
+            source={{
+              uri: 'https://images.pexels.com/photos/3288102/pexels-photo-3288102.png',
+            }}
             style={styles.logo}
             resizeMode="contain"
           />
           <Text style={styles.title}>Le Vieux Moulin</Text>
           <Text style={styles.subtitle}>Administration</Text>
         </View>
-        
+
         <View style={styles.formContainer}>
           <Text style={styles.label}>Email</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             placeholder="Entrez votre email"
             value={email}
@@ -56,10 +72,10 @@ export default function LoginScreen() {
             autoCapitalize="none"
             autoCorrect={false}
           />
-          
+
           <Text style={styles.label}>Mot de passe</Text>
           <View style={styles.passwordContainer}>
-            <TextInput 
+            <TextInput
               style={styles.passwordInput}
               placeholder="Entrez votre mot de passe"
               value={password}
@@ -68,7 +84,7 @@ export default function LoginScreen() {
               autoCapitalize="none"
               autoCorrect={false}
             />
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.eyeButton}
               onPress={() => setShowPassword(!showPassword)}
             >
@@ -79,9 +95,12 @@ export default function LoginScreen() {
               )}
             </TouchableOpacity>
           </View>
-          
-          <TouchableOpacity 
-            style={[styles.loginButton, isLoading && styles.loginButtonDisabled]}
+
+          <TouchableOpacity
+            style={[
+              styles.loginButton,
+              isLoading && styles.loginButtonDisabled,
+            ]}
             onPress={handleLogin}
             disabled={isLoading}
           >
@@ -92,7 +111,7 @@ export default function LoginScreen() {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -183,4 +202,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#FFFFFF',
   },
-});
+})

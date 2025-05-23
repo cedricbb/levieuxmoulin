@@ -1,8 +1,17 @@
-import { View, Text, StyleSheet } from "react-native";
-import GiteItem from "../card/GiteItem";
-import GiteItemWithoutBullet from "../card/GitItemWithoutBullet";
-import Spacer from "../ui/Spacer";
-import { Bed, Utensils, Wifi, SquareParking, Snowflake, Armchair, Fence, Baby } from 'lucide-react-native';
+import { View, Text, StyleSheet } from 'react-native'
+import GiteItem from '../card/GiteItem'
+import GiteItemWithoutBullet from '../card/GitItemWithoutBullet'
+import Spacer from '../ui/Spacer'
+import {
+  Bed,
+  Utensils,
+  Wifi,
+  SquareParking,
+  Snowflake,
+  Armchair,
+  Fence,
+  Baby,
+} from 'lucide-react-native'
 
 export default function GiteEquipements() {
   return (
@@ -20,8 +29,7 @@ export default function GiteEquipements() {
           Congélateur
           Cafetière, Bouilloire, Grille-pain
           Micro-ondes
-          `
-        }
+          `}
       />
       <Text style={styles.subTitle}>
         <Armchair size={16} color="#8B5A2B" /> Salle de séjour
@@ -34,8 +42,7 @@ export default function GiteEquipements() {
           Buffet
           Porte manteaux
           TV
-          `
-        }
+          `}
       />
       <Text style={styles.subTitle}>
         <Bed size={16} color="#8B5A2B" /> Chambres
@@ -46,8 +53,7 @@ export default function GiteEquipements() {
           Literie de bonne qualité
           Matelas confortables
           Canapés
-          `
-        }
+          `}
       />
       <Text style={styles.subTitle}>
         <Baby size={16} color="#8B5A2B" /> Kit bébé
@@ -57,8 +63,7 @@ export default function GiteEquipements() {
           Chaise haute
           Lit parapluie
           Baignoire
-          `
-        }
+          `}
       />
       <Text style={styles.subTitle}>
         <Fence size={16} color="#8B5A2B" /> Terrasse
@@ -69,8 +74,7 @@ export default function GiteEquipements() {
           Chaises
           Parasols
           Barbecue
-          `
-        }
+          `}
       />
       <Text style={styles.subTitle}>
         <Wifi size={16} color="#8B5A2B" /> Wifi
@@ -78,8 +82,7 @@ export default function GiteEquipements() {
       <GiteItem
         description={`
           Accès gratuit à internet (intérieur et terrasse)
-          `
-        }
+          `}
       />
       <Text style={styles.subTitle}>
         <SquareParking size={16} color="#8B5A2B" /> Parking gratuit
@@ -90,8 +93,7 @@ export default function GiteEquipements() {
           7 places privatives
           1 PMR devant le chalet
           Parking autocars à proximité
-          `
-        }
+          `}
       />
       <Text style={styles.subTitle}>
         <Snowflake size={16} color="#8B5A2B" /> Local à ski
@@ -99,12 +101,11 @@ export default function GiteEquipements() {
       <GiteItem
         description={`
           Local à ski à votre disposition
-          `
-        }
+          `}
       />
       <Spacer size={24} />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -130,4 +131,4 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 16,
   },
-});
+})

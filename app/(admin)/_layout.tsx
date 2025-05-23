@@ -27,48 +27,49 @@ export default function AdminLayout() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-      }}>
-      <Stack.Screen 
-        name="index" 
-        options={{ 
+      }}
+    >
+      <Stack.Screen
+        name="index"
+        options={{
           title: 'Administration',
           headerShown: true,
-        }} 
+        }}
       />
-      <Stack.Screen 
-        name="edit-home" 
-        options={{ 
+      <Stack.Screen
+        name="edit-home"
+        options={{
           title: 'Modifier Accueil',
           headerShown: true,
-        }} 
+        }}
       />
-      <Stack.Screen 
-        name="edit-gite" 
-        options={{ 
+      <Stack.Screen
+        name="edit-gite"
+        options={{
           title: 'Modifier Le Gîte',
           headerShown: true,
-        }} 
+        }}
       />
-      <Stack.Screen 
-        name="edit-activities" 
-        options={{ 
+      <Stack.Screen
+        name="edit-activities"
+        options={{
           title: 'Modifier Activités',
           headerShown: true,
-        }} 
+        }}
       />
-      <Stack.Screen 
-        name="edit-gallery" 
-        options={{ 
+      <Stack.Screen
+        name="edit-gallery"
+        options={{
           title: 'Modifier Galerie',
           headerShown: true,
-        }} 
+        }}
       />
-      <Stack.Screen 
-        name="edit-infos" 
-        options={{ 
+      <Stack.Screen
+        name="edit-infos"
+        options={{
           title: 'Modifier Infos',
           headerShown: true,
-        }} 
+        }}
       />
     </Stack>
   );

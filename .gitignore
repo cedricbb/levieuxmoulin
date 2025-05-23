@@ -36,3 +36,7 @@ yarn-error.*
 
 # bolt
 .bolt/
+
+# prettier
+.prettierrc
+.prettierrc.js

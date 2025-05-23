@@ -1,29 +1,39 @@
-import { useState, useRef, useCallback } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Platform } from 'react-native';
-import { WebView } from 'react-native-webview';
-import type { WebView as WebViewType, WebViewNavigation } from 'react-native-webview';
-import { ChevronLeft } from 'lucide-react-native';
+import { useState, useRef, useCallback } from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+  Platform,
+} from 'react-native'
+import { WebView } from 'react-native-webview'
+import type {
+  WebView as WebViewType,
+  WebViewNavigation,
+} from 'react-native-webview'
+import { ChevronLeft } from 'lucide-react-native'
 
 // This is a mock Le Bon Coin URL - in a real implementation this would be the actual listing URL
-const BOOKING_URL = 'https://www.leboncoin.fr';
+const BOOKING_URL = 'https://www.leboncoin.fr'
 
 export default function ReservationScreen() {
-  const [isLoading, setIsLoading] = useState(true);
-  const webViewRef = useRef<WebViewType>(null);
-  const [canGoBack, setCanGoBack] = useState(false);
-  
+  const [isLoading, setIsLoading] = useState(true)
+  const webViewRef = useRef<WebViewType>(null)
+  const [canGoBack, setCanGoBack] = useState(false)
+
   const handleBackPress = () => {
     if (canGoBack && webViewRef.current) {
-      webViewRef.current.goBack();
-      return true;
+      webViewRef.current.goBack()
+      return true
     }
-    return false;
-  };
-  
+    return false
+  }
+
   const onNavigationStateChange = useCallback((navState: WebViewNavigation) => {
-    setCanGoBack(navState.canGoBack);
-  }, []);
-  
+    setCanGoBack(navState.canGoBack)
+  }, [])
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -35,13 +45,15 @@ export default function ReservationScreen() {
         <Text style={styles.headerTitle}>Réservation</Text>
         <View style={styles.placeholder} />
       </View>
-      
+
       {isLoading && (
         <View style={styles.loadingContainer}>
-          <Text style={styles.loadingText}>Chargement de la page de réservation...</Text>
+          <Text style={styles.loadingText}>
+            Chargement de la page de réservation...
+          </Text>
         </View>
       )}
-      
+
       <WebView
         ref={webViewRef}
         source={{ uri: BOOKING_URL }}
@@ -53,14 +65,15 @@ export default function ReservationScreen() {
         javaScriptEnabled={true}
         domStorageEnabled={true}
       />
-      
+
       <View style={styles.footer}>
         <Text style={styles.footerText}>
-          Vous êtes redirigé vers le site Le Bon Coin pour effectuer votre réservation.
+          Vous êtes redirigé vers le site Le Bon Coin pour effectuer votre
+          réservation.
         </Text>
       </View>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -117,4 +130,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#5D4037',
   },
-});
+})

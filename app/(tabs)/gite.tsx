@@ -1,49 +1,67 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { useContent } from '@/hooks/useContent';
-import LoadingScreen from '@/components/ui/LoadingScreen';
-import ErrorScreen from '@/components/ui/ErrorScreen';
-import { useState } from 'react';
-import GiteDescription from '@/components/pages/GiteDescription';
-import GiteEquipements from '@/components/pages/GiteEquipements';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native'
+import { useContent } from '@/hooks/useContent'
+import LoadingScreen from '@/components/ui/LoadingScreen'
+import ErrorScreen from '@/components/ui/ErrorScreen'
+import { useState } from 'react'
+import GiteDescription from '@/components/pages/GiteDescription'
+import GiteEquipements from '@/components/pages/GiteEquipements'
 
-type GiteTab = 'description' | 'equipements';
+type GiteTab = 'description' | 'equipements'
 
 export default function GiteScreen() {
-  const [tab, setTab] = useState<GiteTab>('description');
-  const { content, isLoading, error } = useContent('gite');
-  
-  if (isLoading) return <LoadingScreen />;
-  if (error) return <ErrorScreen message={error} />;
-  
+  const [tab, setTab] = useState<GiteTab>('description')
+  const { content, isLoading, error } = useContent('gite')
+
+  if (isLoading) return <LoadingScreen />
+  if (error) return <ErrorScreen message={error} />
+
   return (
     <View style={styles.container}>
       <View style={styles.giteToggle}>
         <TouchableOpacity
-          style={[styles.giteButton, tab === 'description' && styles.giteButtonActive]}
+          style={[
+            styles.giteButton,
+            tab === 'description' && styles.giteButtonActive,
+          ]}
           onPress={() => setTab('description')}
         >
-          <Text style={[styles.giteButtonText, tab === 'description' && styles.giteButtonTextActive]}>
+          <Text
+            style={[
+              styles.giteButtonText,
+              tab === 'description' && styles.giteButtonTextActive,
+            ]}
+          >
             Description
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.giteButton, tab === 'equipements' && styles.giteButtonActive]}
+          style={[
+            styles.giteButton,
+            tab === 'equipements' && styles.giteButtonActive,
+          ]}
           onPress={() => setTab('equipements')}
         >
-          <Text style={[styles.giteButtonText, tab === 'equipements' && styles.giteButtonTextActive]}>
+          <Text
+            style={[
+              styles.giteButtonText,
+              tab === 'equipements' && styles.giteButtonTextActive,
+            ]}
+          >
             Équipements
           </Text>
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.contentContainer}>
-      {tab === 'description' ? (
-          <GiteDescription />
-        ) : (
-          <GiteEquipements />
-        )}
+        {tab === 'description' ? <GiteDescription /> : <GiteEquipements />}
       </ScrollView>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -91,4 +109,4 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 16,
   },
-});
+})

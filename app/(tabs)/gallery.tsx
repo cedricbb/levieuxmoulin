@@ -1,70 +1,128 @@
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Dimensions, Modal, SafeAreaView } from 'react-native';
-import { useState } from 'react';
-import { useContent } from '@/hooks/useContent';
-import LoadingScreen from '@/components/ui/LoadingScreen';
-import ErrorScreen from '@/components/ui/ErrorScreen';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+  Modal,
+  SafeAreaView,
+} from 'react-native'
+import { useState } from 'react'
+import { useContent } from '@/hooks/useContent'
+import LoadingScreen from '@/components/ui/LoadingScreen'
+import ErrorScreen from '@/components/ui/ErrorScreen'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react-native'
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window')
 
 // Mock gallery data
 const GALLERY_IMAGES = [
-  { id: '1', url: 'https://images.pexels.com/photos/3288102/pexels-photo-3288102.png', caption: 'Façade du chalet' },
-  { id: '2', url: 'https://images.pexels.com/photos/5824883/pexels-photo-5824883.jpeg', caption: 'Salon avec cheminée' },
-  { id: '3', url: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg', caption: 'Chambre principale' },
-  { id: '4', url: 'https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg', caption: 'Vue depuis la terrasse' },
-  { id: '5', url: 'https://images.pexels.com/photos/6782567/pexels-photo-6782567.jpeg', caption: 'Cuisine équipée' },
-  { id: '6', url: 'https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg', caption: 'Salle à manger' },
-  { id: '7', url: 'https://images.pexels.com/photos/6207494/pexels-photo-6207494.jpeg', caption: 'Chambre 2' },
-  { id: '8', url: 'https://images.pexels.com/photos/3230517/pexels-photo-3230517.jpeg', caption: 'Environs en hiver' },
-  { id: '9', url: 'https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg', caption: 'Environs en été' },
-  { id: '10', url: 'https://images.pexels.com/photos/756076/pexels-photo-756076.jpeg', caption: 'Grand-Bornand village' },
-  { id: '11', url: 'https://images.pexels.com/photos/1058342/pexels-photo-1058342.jpeg', caption: 'Chemin de randonnée' },
-  { id: '12', url: 'https://images.pexels.com/photos/1699020/pexels-photo-1699020.jpeg', caption: 'Ambiance hivernale' },
-];
+  {
+    id: '1',
+    url: 'https://images.pexels.com/photos/3288102/pexels-photo-3288102.png',
+    caption: 'Façade du chalet',
+  },
+  {
+    id: '2',
+    url: 'https://images.pexels.com/photos/5824883/pexels-photo-5824883.jpeg',
+    caption: 'Salon avec cheminée',
+  },
+  {
+    id: '3',
+    url: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg',
+    caption: 'Chambre principale',
+  },
+  {
+    id: '4',
+    url: 'https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg',
+    caption: 'Vue depuis la terrasse',
+  },
+  {
+    id: '5',
+    url: 'https://images.pexels.com/photos/6782567/pexels-photo-6782567.jpeg',
+    caption: 'Cuisine équipée',
+  },
+  {
+    id: '6',
+    url: 'https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg',
+    caption: 'Salle à manger',
+  },
+  {
+    id: '7',
+    url: 'https://images.pexels.com/photos/6207494/pexels-photo-6207494.jpeg',
+    caption: 'Chambre 2',
+  },
+  {
+    id: '8',
+    url: 'https://images.pexels.com/photos/3230517/pexels-photo-3230517.jpeg',
+    caption: 'Environs en hiver',
+  },
+  {
+    id: '9',
+    url: 'https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg',
+    caption: 'Environs en été',
+  },
+  {
+    id: '10',
+    url: 'https://images.pexels.com/photos/756076/pexels-photo-756076.jpeg',
+    caption: 'Grand-Bornand village',
+  },
+  {
+    id: '11',
+    url: 'https://images.pexels.com/photos/1058342/pexels-photo-1058342.jpeg',
+    caption: 'Chemin de randonnée',
+  },
+  {
+    id: '12',
+    url: 'https://images.pexels.com/photos/1699020/pexels-photo-1699020.jpeg',
+    caption: 'Ambiance hivernale',
+  },
+]
 
 export default function GalleryScreen() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
-  const { content, isLoading, error } = useContent('gallery');
-  
-  if (isLoading) return <LoadingScreen />;
-  if (error) return <ErrorScreen message={error} />;
-  
-  const handleImagePress = (index) => {
-    setSelectedImage(index);
-    setModalVisible(true);
-  };
-  
-  const navigateImage = (direction) => {
-    const newIndex = selectedImage + direction;
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const [modalVisible, setModalVisible] = useState(false)
+  const { content, isLoading, error } = useContent('gallery')
+
+  if (isLoading) return <LoadingScreen />
+  if (error) return <ErrorScreen message={error} />
+
+  const handleImagePress = (index: number) => {
+    setSelectedImage(index)
+    setModalVisible(true)
+  }
+
+  const navigateImage = (direction: number) => {
+    const newIndex = selectedImage !== null ? selectedImage + direction : 0
     if (newIndex >= 0 && newIndex < GALLERY_IMAGES.length) {
-      setSelectedImage(newIndex);
+      setSelectedImage(newIndex)
     }
-  };
-  
-  const renderItem = ({ item, index }) => (
-    <TouchableOpacity 
-      style={styles.imageContainer} 
+  }
+
+  const renderItem = ({ item, index }: { item: any; index: number }) => (
+    <TouchableOpacity
+      style={styles.imageContainer}
       onPress={() => handleImagePress(index)}
     >
-      <Image 
+      <Image
         source={{ uri: item.url }}
         style={styles.thumbnailImage}
         resizeMode="cover"
       />
     </TouchableOpacity>
-  );
-  
+  )
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Galerie Photos</Text>
-      
+
       <Text style={styles.description}>
-        Découvrez notre gîte à travers cette sélection de photos montrant l'intérieur, 
-        l'extérieur et les environs du Vieux Moulin.
+        Découvrez notre gîte à travers cette sélection de photos montrant
+        l'intérieur, l'extérieur et les environs du Vieux Moulin.
       </Text>
-      
+
       <FlatList
         data={GALLERY_IMAGES}
         renderItem={renderItem}
@@ -72,7 +130,7 @@ export default function GalleryScreen() {
         numColumns={2}
         contentContainerStyle={styles.galleryContainer}
       />
-      
+
       <Modal
         animationType="fade"
         transparent={true}
@@ -81,7 +139,7 @@ export default function GalleryScreen() {
       >
         <SafeAreaView style={styles.modalContainer}>
           <View style={styles.modalHeader}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.closeButton}
               onPress={() => setModalVisible(false)}
             >
@@ -91,7 +149,7 @@ export default function GalleryScreen() {
               {selectedImage !== null && GALLERY_IMAGES[selectedImage].caption}
             </Text>
           </View>
-          
+
           <View style={styles.imageViewerContainer}>
             {selectedImage !== null && (
               <Image
@@ -100,29 +158,46 @@ export default function GalleryScreen() {
                 resizeMode="contain"
               />
             )}
-            
+
             <View style={styles.navigationControls}>
-              <TouchableOpacity 
-                style={[styles.navButton, selectedImage === 0 && styles.disabledNavButton]}
+              <TouchableOpacity
+                style={[
+                  styles.navButton,
+                  selectedImage === 0 && styles.disabledNavButton,
+                ]}
                 onPress={() => navigateImage(-1)}
                 disabled={selectedImage === 0}
               >
-                <ChevronLeft size={36} color={selectedImage === 0 ? '#999999' : '#FFFFFF'} />
+                <ChevronLeft
+                  size={36}
+                  color={selectedImage === 0 ? '#999999' : '#FFFFFF'}
+                />
               </TouchableOpacity>
-              
-              <TouchableOpacity 
-                style={[styles.navButton, selectedImage === GALLERY_IMAGES.length - 1 && styles.disabledNavButton]}
+
+              <TouchableOpacity
+                style={[
+                  styles.navButton,
+                  selectedImage === GALLERY_IMAGES.length - 1 &&
+                    styles.disabledNavButton,
+                ]}
                 onPress={() => navigateImage(1)}
                 disabled={selectedImage === GALLERY_IMAGES.length - 1}
               >
-                <ChevronRight size={36} color={selectedImage === GALLERY_IMAGES.length - 1 ? '#999999' : '#FFFFFF'} />
+                <ChevronRight
+                  size={36}
+                  color={
+                    selectedImage === GALLERY_IMAGES.length - 1
+                      ? '#999999'
+                      : '#FFFFFF'
+                  }
+                />
               </TouchableOpacity>
             </View>
           </View>
         </SafeAreaView>
       </Modal>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -206,4 +281,4 @@ const styles = StyleSheet.create({
   disabledNavButton: {
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
-});
+})

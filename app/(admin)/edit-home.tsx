@@ -1,55 +1,67 @@
-import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { useState } from 'react';
-import { useContent } from '@/hooks/useContent';
-import LoadingScreen from '@/components/ui/LoadingScreen';
-import ErrorScreen from '@/components/ui/ErrorScreen';
-import ImagePicker from '@/components/admin/ImagePicker';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+} from 'react-native'
+import { useState } from 'react'
+import { useContent } from '@/hooks/useContent'
+import LoadingScreen from '@/components/ui/LoadingScreen'
+import ErrorScreen from '@/components/ui/ErrorScreen'
+import ImagePicker from '@/components/admin/ImagePicker'
 
 export default function EditHomeScreen() {
-  const { content, isLoading, error, updateContent } = useContent('home');
-  
-  const [title, setTitle] = useState('Bienvenue au Vieux Moulin');
+  const { content, isLoading, error, updateContent } = useContent('home')
+
+  const [title, setTitle] = useState('Bienvenue au Vieux Moulin')
   const [welcomeText, setWelcomeText] = useState(
-    'Niché au cœur du Grand-Bornand Chinaillon, notre gîte authentique vous propose un séjour inoubliable dans un cadre chaleureux et montagnard. Profitez de la beauté des Alpes françaises dans ce havre de paix traditionnel et confortable.'
-  );
+    'Niché au cœur du Grand-Bornand Chinaillon, notre gîte authentique vous propose un séjour inoubliable dans un cadre chaleureux et montagnard. Profitez de la beauté des Alpes françaises dans ce havre de paix traditionnel et confortable.',
+  )
   const [closingText, setClosingText] = useState(
-    'Que ce soit pour des vacances en famille, entre amis ou en amoureux, Le Vieux Moulin vous accueille pour un séjour inoubliable au cœur des montagnes.'
-  );
-  const [heroImage, setHeroImage] = useState('https://images.pexels.com/photos/3408355/pexels-photo-3408355.jpeg');
-  const [secondaryImage, setSecondaryImage] = useState('https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg');
-  
+    'Que ce soit pour des vacances en famille, entre amis ou en amoureux, Le Vieux Moulin vous accueille pour un séjour inoubliable au cœur des montagnes.',
+  )
+  const [heroImage, setHeroImage] = useState(
+    'https://images.pexels.com/photos/3408355/pexels-photo-3408355.jpeg',
+  )
+  const [secondaryImage, setSecondaryImage] = useState(
+    'https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg',
+  )
+
   const [highlights, setHighlights] = useState([
     {
       title: 'Authenticité',
-      text: 'Un gîte de caractère aux traditions savoyardes préservées'
+      text: 'Un gîte de caractère aux traditions savoyardes préservées',
     },
     {
       title: 'Confort',
-      text: 'Des équipements modernes dans un écrin traditionnel'
+      text: 'Des équipements modernes dans un écrin traditionnel',
     },
     {
       title: 'Emplacement',
-      text: 'Idéalement situé pour profiter des activités en toutes saisons'
+      text: 'Idéalement situé pour profiter des activités en toutes saisons',
     },
-  ]);
-  
-  const [isSaving, setIsSaving] = useState(false);
-  
-  if (isLoading) return <LoadingScreen />;
-  if (error) return <ErrorScreen message={error} />;
-  
+  ])
+
+  const [isSaving, setIsSaving] = useState(false)
+
+  if (isLoading) return <LoadingScreen />
+  if (error) return <ErrorScreen message={error} />
+
   const updateHighlight = (index: number, field: string, value: string) => {
-    const updatedHighlights = [...highlights];
+    const updatedHighlights = [...highlights]
     updatedHighlights[index] = {
       ...updatedHighlights[index],
-      [field]: value
-    };
-    setHighlights(updatedHighlights);
-  };
-  
+      [field]: value,
+    }
+    setHighlights(updatedHighlights)
+  }
+
   const handleSave = async () => {
-    setIsSaving(true);
-    
+    setIsSaving(true)
+
     try {
       // In a real app, this would save to your backend
       await updateContent({
@@ -58,37 +70,34 @@ export default function EditHomeScreen() {
         closingText,
         heroImage,
         secondaryImage,
-        highlights
-      });
-      
-      Alert.alert('Succès', 'Les modifications ont été enregistrées.');
+        highlights,
+      })
+
+      Alert.alert('Succès', 'Les modifications ont été enregistrées.')
     } catch (error) {
-      Alert.alert('Erreur', 'Impossible d\'enregistrer les modifications.');
+      Alert.alert('Erreur', "Impossible d'enregistrer les modifications.")
     } finally {
-      setIsSaving(false);
+      setIsSaving(false)
     }
-  };
-  
+  }
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.sectionTitle}>Images</Text>
-      
+
       <View style={styles.imageSection}>
         <Text style={styles.label}>Image d'en-tête</Text>
-        <ImagePicker
-          currentImage={heroImage}
-          onImageSelected={setHeroImage}
-        />
-        
+        <ImagePicker currentImage={heroImage} onImageSelected={setHeroImage} />
+
         <Text style={styles.label}>Image secondaire</Text>
         <ImagePicker
           currentImage={secondaryImage}
           onImageSelected={setSecondaryImage}
         />
       </View>
-      
+
       <Text style={styles.sectionTitle}>Textes d'introduction</Text>
-      
+
       <View style={styles.formGroup}>
         <Text style={styles.label}>Titre de bienvenue</Text>
         <TextInput
@@ -98,7 +107,7 @@ export default function EditHomeScreen() {
           multiline={false}
         />
       </View>
-      
+
       <View style={styles.formGroup}>
         <Text style={styles.label}>Texte de bienvenue</Text>
         <TextInput
@@ -110,13 +119,13 @@ export default function EditHomeScreen() {
           textAlignVertical="top"
         />
       </View>
-      
+
       <Text style={styles.sectionTitle}>Points forts</Text>
-      
+
       {highlights.map((highlight, index) => (
         <View key={index} style={styles.highlightContainer}>
           <Text style={styles.highlightNumber}>Point fort #{index + 1}</Text>
-          
+
           <View style={styles.formGroup}>
             <Text style={styles.label}>Titre</Text>
             <TextInput
@@ -125,7 +134,7 @@ export default function EditHomeScreen() {
               onChangeText={(value) => updateHighlight(index, 'title', value)}
             />
           </View>
-          
+
           <View style={styles.formGroup}>
             <Text style={styles.label}>Description</Text>
             <TextInput
@@ -139,9 +148,9 @@ export default function EditHomeScreen() {
           </View>
         </View>
       ))}
-      
+
       <Text style={styles.sectionTitle}>Conclusion</Text>
-      
+
       <View style={styles.formGroup}>
         <Text style={styles.label}>Texte de conclusion</Text>
         <TextInput
@@ -153,7 +162,7 @@ export default function EditHomeScreen() {
           textAlignVertical="top"
         />
       </View>
-      
+
       <TouchableOpacity
         style={[styles.saveButton, isSaving && styles.saveButtonDisabled]}
         onPress={handleSave}
@@ -164,7 +173,7 @@ export default function EditHomeScreen() {
         </Text>
       </TouchableOpacity>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -236,4 +245,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#FFFFFF',
   },
-});
+})

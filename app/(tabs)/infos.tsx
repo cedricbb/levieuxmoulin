@@ -1,34 +1,49 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
-import { useContent } from '@/hooks/useContent';
-import LoadingScreen from '@/components/ui/LoadingScreen';
-import ErrorScreen from '@/components/ui/ErrorScreen';
-import { MapPin, Phone, Mail, Clock, Calendar, CircleHelp as HelpCircle, ExternalLink } from 'lucide-react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Linking,
+} from 'react-native'
+import { useContent } from '@/hooks/useContent'
+import LoadingScreen from '@/components/ui/LoadingScreen'
+import ErrorScreen from '@/components/ui/ErrorScreen'
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Calendar,
+  CircleHelp as HelpCircle,
+  ExternalLink,
+} from 'lucide-react-native'
 
 export default function InfosScreen() {
-  const { content, isLoading, error } = useContent('infos');
-  
-  if (isLoading) return <LoadingScreen />;
-  if (error) return <ErrorScreen message={error} />;
-  
+  const { content, isLoading, error } = useContent('infos')
+
+  if (isLoading) return <LoadingScreen />
+  if (error) return <ErrorScreen message={error} />
+
   const openMap = () => {
-    const address = "Le Vieux Moulin, Chinaillon, Le Grand-Bornand, France";
-    const url = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
-    Linking.openURL(url);
-  };
-  
+    const address = 'Le Vieux Moulin, Chinaillon, Le Grand-Bornand, France'
+    const url = `https://maps.google.com/?q=${encodeURIComponent(address)}`
+    Linking.openURL(url)
+  }
+
   const makePhoneCall = () => {
-    Linking.openURL('tel:+33612345678');
-  };
-  
+    Linking.openURL('tel:+33612345678')
+  }
+
   const sendEmail = () => {
-    Linking.openURL('mailto:contact@levieuxmoulin-chinaillon.fr');
-  };
-  
+    Linking.openURL('mailto:contact@levieuxmoulin-chinaillon.fr')
+  }
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Comment nous trouver</Text>
-        
+
         <TouchableOpacity style={styles.mapContainer} onPress={openMap}>
           <View style={styles.mapPlaceholder}>
             <MapPin size={40} color="#8B5A2B" />
@@ -36,112 +51,135 @@ export default function InfosScreen() {
             <ExternalLink size={16} color="#8B5A2B" />
           </View>
         </TouchableOpacity>
-        
+
         <View style={styles.addressContainer}>
           <Text style={styles.addressLabel}>Adresse</Text>
           <Text style={styles.addressText}>Le Vieux Moulin</Text>
           <Text style={styles.addressText}>1234 Route de Chinaillon</Text>
-          <Text style={styles.addressText}>74450 Le Grand-Bornand Chinaillon</Text>
+          <Text style={styles.addressText}>
+            74450 Le Grand-Bornand Chinaillon
+          </Text>
           <Text style={styles.addressText}>France</Text>
         </View>
-        
+
         <View style={styles.directionsContainer}>
           <Text style={styles.directionsTitle}>Comment y accéder</Text>
           <Text style={styles.directionsText}>
-            • Depuis Annecy (35 km) : suivre la D909 direction Thônes, puis la D909 direction 
-              Le Grand-Bornand. À l'entrée du Grand-Bornand, prendre la D4 direction Chinaillon.{'\n\n'}
-            
-            • Depuis Genève (50 km) : suivre l'A41 direction Annecy, sortie 19 Annecy Nord, 
-              puis suivre les indications pour Le Grand-Bornand.{'\n\n'}
-              
-            • En avion : Aéroport de Genève (50 km) ou Aéroport d'Annecy (35 km).{'\n\n'}
-              
-            • En train : Gare d'Annecy, puis bus ou taxi jusqu'au Grand-Bornand.
+            • Depuis Annecy (35 km) : suivre la D909 direction Thônes, puis la
+            D909 direction Le Grand-Bornand. À l'entrée du Grand-Bornand,
+            prendre la D4 direction Chinaillon.{'\n\n'}• Depuis Genève (50 km) :
+            suivre l'A41 direction Annecy, sortie 19 Annecy Nord, puis suivre
+            les indications pour Le Grand-Bornand.{'\n\n'}• En avion : Aéroport
+            de Genève (50 km) ou Aéroport d'Annecy (35 km).{'\n\n'}• En train :
+            Gare d'Annecy, puis bus ou taxi jusqu'au Grand-Bornand.
           </Text>
         </View>
       </View>
-      
+
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Contact</Text>
-        
+
         <TouchableOpacity style={styles.contactItem} onPress={makePhoneCall}>
           <Phone size={24} color="#8B5A2B" />
           <Text style={styles.contactText}>+33 6 12 34 56 78</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity style={styles.contactItem} onPress={sendEmail}>
           <Mail size={24} color="#8B5A2B" />
-          <Text style={styles.contactText}>contact@levieuxmoulin-chinaillon.fr</Text>
+          <Text style={styles.contactText}>
+            contact@levieuxmoulin-chinaillon.fr
+          </Text>
         </TouchableOpacity>
       </View>
-      
+
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Horaires</Text>
-        
+
         <View style={styles.scheduleItem}>
           <Clock size={24} color="#8B5A2B" />
           <View style={styles.scheduleTextContainer}>
             <Text style={styles.scheduleTitle}>Arrivée / Départ</Text>
-            <Text style={styles.scheduleText}>• Arrivée : à partir de 16h00</Text>
+            <Text style={styles.scheduleText}>
+              • Arrivée : à partir de 16h00
+            </Text>
             <Text style={styles.scheduleText}>• Départ : avant 10h00</Text>
           </View>
         </View>
-        
+
         <View style={styles.scheduleItem}>
           <Calendar size={24} color="#8B5A2B" />
           <View style={styles.scheduleTextContainer}>
             <Text style={styles.scheduleTitle}>Périodes de location</Text>
-            <Text style={styles.scheduleText}>• Haute saison (hiver/été) : location à la semaine, du samedi au samedi</Text>
-            <Text style={styles.scheduleText}>• Basse saison : location possible pour des séjours plus courts (minimum 2 nuits)</Text>
+            <Text style={styles.scheduleText}>
+              • Haute saison (hiver/été) : location à la semaine, du samedi au
+              samedi
+            </Text>
+            <Text style={styles.scheduleText}>
+              • Basse saison : location possible pour des séjours plus courts
+              (minimum 2 nuits)
+            </Text>
           </View>
         </View>
       </View>
-      
+
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Questions fréquentes</Text>
-        
+
         <View style={styles.faqItem}>
           <View style={styles.faqQuestion}>
             <HelpCircle size={20} color="#8B5A2B" />
-            <Text style={styles.faqQuestionText}>Les animaux sont-ils acceptés ?</Text>
+            <Text style={styles.faqQuestionText}>
+              Les animaux sont-ils acceptés ?
+            </Text>
           </View>
           <Text style={styles.faqAnswerText}>
-            Oui, les animaux de compagnie bien éduqués sont acceptés avec un supplément de 50€ par séjour.
+            Oui, les animaux de compagnie bien éduqués sont acceptés avec un
+            supplément de 50€ par séjour.
           </Text>
         </View>
-        
+
         <View style={styles.faqItem}>
           <View style={styles.faqQuestion}>
             <HelpCircle size={20} color="#8B5A2B" />
-            <Text style={styles.faqQuestionText}>Y a-t-il un parking disponible ?</Text>
+            <Text style={styles.faqQuestionText}>
+              Y a-t-il un parking disponible ?
+            </Text>
           </View>
           <Text style={styles.faqAnswerText}>
-            Oui, le gîte dispose d'un parking privé pouvant accueillir jusqu'à 3 véhicules.
+            Oui, le gîte dispose d'un parking privé pouvant accueillir jusqu'à 3
+            véhicules.
           </Text>
         </View>
-        
+
         <View style={styles.faqItem}>
           <View style={styles.faqQuestion}>
             <HelpCircle size={20} color="#8B5A2B" />
-            <Text style={styles.faqQuestionText}>Le linge de maison est-il fourni ?</Text>
+            <Text style={styles.faqQuestionText}>
+              Le linge de maison est-il fourni ?
+            </Text>
           </View>
           <Text style={styles.faqAnswerText}>
-            Oui, les draps et serviettes sont fournis. Les lits sont faits à votre arrivée.
+            Oui, les draps et serviettes sont fournis. Les lits sont faits à
+            votre arrivée.
           </Text>
         </View>
-        
+
         <View style={styles.faqItem}>
           <View style={styles.faqQuestion}>
             <HelpCircle size={20} color="#8B5A2B" />
-            <Text style={styles.faqQuestionText}>Comment se déplacer sans voiture ?</Text>
+            <Text style={styles.faqQuestionText}>
+              Comment se déplacer sans voiture ?
+            </Text>
           </View>
           <Text style={styles.faqAnswerText}>
-            Une navette gratuite dessert le village et la station durant la saison d'hiver. En été, des bus relient Le Grand-Bornand aux villages voisins.
+            Une navette gratuite dessert le village et la station durant la
+            saison d'hiver. En été, des bus relient Le Grand-Bornand aux
+            villages voisins.
           </Text>
         </View>
       </View>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -272,4 +310,4 @@ const styles = StyleSheet.create({
     color: '#555555',
     paddingLeft: 28,
   },
-});
+})

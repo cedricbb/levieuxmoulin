@@ -1,51 +1,69 @@
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
-import { useContent } from '@/hooks/useContent';
-import LoadingScreen from '@/components/ui/LoadingScreen';
-import ErrorScreen from '@/components/ui/ErrorScreen';
-import { images } from '@/assets/images/images';
-import SummerActivities from '@/components/card/SummerActivities';
-import WinterActivities from '@/components/card/WinterActivities';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from 'react-native'
+import { useState } from 'react'
+import { useContent } from '@/hooks/useContent'
+import LoadingScreen from '@/components/ui/LoadingScreen'
+import ErrorScreen from '@/components/ui/ErrorScreen'
+import SummerActivities from '@/components/card/SummerActivities'
+import WinterActivities from '@/components/card/WinterActivities'
 
-type Season = 'winter' | 'summer';
+type Season = 'winter' | 'summer'
 
 export default function ActivitiesScreen() {
-  const [season, setSeason] = useState<Season>('winter');
-  const { content, isLoading, error } = useContent('activities');
-  
-  if (isLoading) return <LoadingScreen />;
-  if (error) return <ErrorScreen message={error} />;
-  
+  const [season, setSeason] = useState<Season>('winter')
+  const { content, isLoading, error } = useContent('activities')
+
+  if (isLoading) return <LoadingScreen />
+  if (error) return <ErrorScreen message={error} />
+
   return (
     <View style={styles.container}>
       <View style={styles.seasonToggle}>
         <TouchableOpacity
-          style={[styles.seasonButton, season === 'winter' && styles.seasonButtonActive]}
+          style={[
+            styles.seasonButton,
+            season === 'winter' && styles.seasonButtonActive,
+          ]}
           onPress={() => setSeason('winter')}
         >
-          <Text style={[styles.seasonButtonText, season === 'winter' && styles.seasonButtonTextActive]}>
+          <Text
+            style={[
+              styles.seasonButtonText,
+              season === 'winter' && styles.seasonButtonTextActive,
+            ]}
+          >
             Hiver
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.seasonButton, season === 'summer' && styles.seasonButtonActive]}
+          style={[
+            styles.seasonButton,
+            season === 'summer' && styles.seasonButtonActive,
+          ]}
           onPress={() => setSeason('summer')}
         >
-          <Text style={[styles.seasonButtonText, season === 'summer' && styles.seasonButtonTextActive]}>
+          <Text
+            style={[
+              styles.seasonButtonText,
+              season === 'summer' && styles.seasonButtonTextActive,
+            ]}
+          >
             Été
           </Text>
         </TouchableOpacity>
       </View>
-      
+
       <ScrollView style={styles.contentContainer}>
-        {season === 'winter' ? (
-          <WinterActivities />
-        ) : (
-          <SummerActivities />
-        )}
+        {season === 'winter' ? <WinterActivities /> : <SummerActivities />}
       </ScrollView>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -79,4 +97,4 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 20,
   },
-});
+})

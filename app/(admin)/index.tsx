@@ -1,32 +1,46 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
-import { useAuth } from '@/hooks/useAuth';
-import { Chrome as Home, Building2, Bike, Image as ImageIcon, Info, LogOut, CreditCard as Edit3 } from 'lucide-react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native'
+import { useRouter } from 'expo-router'
+import { useAuth } from '@/hooks/useAuth'
+import {
+  Home,
+  Building2,
+  Bike,
+  Image as ImageIcon,
+  Info,
+  LogOut,
+  CreditCard as Edit3,
+} from 'lucide-react-native'
 
 export default function AdminDashboard() {
-  const router = useRouter();
-  const { logout } = useAuth();
-  
+  const router = useRouter()
+  const { logout } = useAuth()
+
   const handleLogout = async () => {
-    await logout();
-    router.replace('/login');
-  };
+    await logout()
+    router.replace('/login')
+  }
 
   const userview = () => {
-    router.replace('/(tabs)');
-  };
-  
+    router.replace('/(tabs)')
+  }
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Administration</Text>
         <Text style={styles.subtitle}>Le Vieux Moulin Chinaillon</Text>
       </View>
-      
+
       <Text style={styles.sectionTitle}>Gestion du contenu</Text>
-      
+
       <View style={styles.menuContainer}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.menuItem}
           onPress={() => router.push('/edit-home')}
         >
@@ -35,12 +49,14 @@ export default function AdminDashboard() {
           </View>
           <View style={styles.menuItemContent}>
             <Text style={styles.menuItemTitle}>Page d'accueil</Text>
-            <Text style={styles.menuItemDescription}>Modifier le texte et les images de la page d'accueil</Text>
+            <Text style={styles.menuItemDescription}>
+              Modifier le texte et les images de la page d'accueil
+            </Text>
           </View>
           <Edit3 size={20} color="#8B5A2B" />
         </TouchableOpacity>
-        
-        <TouchableOpacity 
+
+        <TouchableOpacity
           style={styles.menuItem}
           onPress={() => router.push('/edit-gite')}
         >
@@ -49,12 +65,14 @@ export default function AdminDashboard() {
           </View>
           <View style={styles.menuItemContent}>
             <Text style={styles.menuItemTitle}>Le Gîte</Text>
-            <Text style={styles.menuItemDescription}>Modifier la description et les équipements</Text>
+            <Text style={styles.menuItemDescription}>
+              Modifier la description et les équipements
+            </Text>
           </View>
           <Edit3 size={20} color="#8B5A2B" />
         </TouchableOpacity>
-        
-        <TouchableOpacity 
+
+        <TouchableOpacity
           style={styles.menuItem}
           onPress={() => router.push('/edit-activities')}
         >
@@ -63,12 +81,14 @@ export default function AdminDashboard() {
           </View>
           <View style={styles.menuItemContent}>
             <Text style={styles.menuItemTitle}>Activités</Text>
-            <Text style={styles.menuItemDescription}>Modifier les activités été et hiver</Text>
+            <Text style={styles.menuItemDescription}>
+              Modifier les activités été et hiver
+            </Text>
           </View>
           <Edit3 size={20} color="#8B5A2B" />
         </TouchableOpacity>
-        
-        <TouchableOpacity 
+
+        <TouchableOpacity
           style={styles.menuItem}
           onPress={() => router.push('/edit-gallery')}
         >
@@ -77,12 +97,14 @@ export default function AdminDashboard() {
           </View>
           <View style={styles.menuItemContent}>
             <Text style={styles.menuItemTitle}>Galerie Photos</Text>
-            <Text style={styles.menuItemDescription}>Gérer les photos du gîte et des environs</Text>
+            <Text style={styles.menuItemDescription}>
+              Gérer les photos du gîte et des environs
+            </Text>
           </View>
           <Edit3 size={20} color="#8B5A2B" />
         </TouchableOpacity>
-        
-        <TouchableOpacity 
+
+        <TouchableOpacity
           style={styles.menuItem}
           onPress={() => router.push('/edit-infos')}
         >
@@ -91,12 +113,14 @@ export default function AdminDashboard() {
           </View>
           <View style={styles.menuItemContent}>
             <Text style={styles.menuItemTitle}>Informations Pratiques</Text>
-            <Text style={styles.menuItemDescription}>Modifier les coordonnées et informations utiles</Text>
+            <Text style={styles.menuItemDescription}>
+              Modifier les coordonnées et informations utiles
+            </Text>
           </View>
           <Edit3 size={20} color="#8B5A2B" />
         </TouchableOpacity>
       </View>
-      
+
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <LogOut size={20} color="#FFFFFF" />
         <Text style={styles.logoutButtonText}>Déconnexion</Text>
@@ -106,7 +130,7 @@ export default function AdminDashboard() {
         <Text style={styles.logoutButtonText}>Voir le site</Text>
       </TouchableOpacity>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -187,4 +211,4 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     marginLeft: 8,
   },
-});
+})

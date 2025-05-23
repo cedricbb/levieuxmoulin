@@ -1,10 +1,17 @@
-import { Tabs } from 'expo-router';
-import { useColorScheme } from 'react-native';
-import { House as Home, Building2, Bike, Image as ImageIcon, Info, CalendarClock } from 'lucide-react-native';
+import { Tabs } from 'expo-router'
+import { useColorScheme } from 'react-native'
+import {
+  House as Home,
+  Building2,
+  Bike,
+  Image as ImageIcon,
+  Info,
+  CalendarClock,
+} from 'lucide-react-native'
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-  
+  const colorScheme = useColorScheme()
+
   return (
     <Tabs
       screenOptions={{
@@ -25,7 +32,8 @@ export default function TabLayout() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -38,7 +46,9 @@ export default function TabLayout() {
         name="gite"
         options={{
           title: 'Le Gîte',
-          tabBarIcon: ({ color, size }) => <Building2 size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Building2 size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
@@ -52,7 +62,9 @@ export default function TabLayout() {
         name="gallery"
         options={{
           title: 'Galerie',
-          tabBarIcon: ({ color, size }) => <ImageIcon size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <ImageIcon size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
@@ -66,9 +78,11 @@ export default function TabLayout() {
         name="reservation"
         options={{
           title: 'Réserver',
-          tabBarIcon: ({ color, size }) => <CalendarClock size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <CalendarClock size={size} color={color} />
+          ),
         }}
       />
     </Tabs>
-  );
+  )
 }
