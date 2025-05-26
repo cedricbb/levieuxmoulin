@@ -4,13 +4,12 @@ import {
   StyleSheet,
   Image,
   ScrollView,
-  Button,
   TouchableOpacity,
 } from 'react-native'
 import { useContent } from '@/hooks/useContent'
 import LoadingScreen from '@/components/ui/LoadingScreen'
 import ErrorScreen from '@/components/ui/ErrorScreen'
-import { images } from '../../assets/images/images'
+import { images } from '../../constants/images'
 import { router } from 'expo-router'
 import { useAuthContext } from '@/contexts/AuthContext'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'

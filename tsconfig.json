@@ -11,6 +11,10 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts"
-  ]
+    "nativewind-env.d.ts",
+    "constants/images.js",
+    "app/(tabs)/index.jsx",
+    "components/admin/ImagePicker.jsx",
+    "components/common/cards/ActivityItem.jsx"
+, "components/common/cards/gite/giteitem/GiteItem.jsx"  ]
 }

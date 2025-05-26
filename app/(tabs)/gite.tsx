@@ -9,8 +9,8 @@ import { useContent } from '@/hooks/useContent'
 import LoadingScreen from '@/components/ui/LoadingScreen'
 import ErrorScreen from '@/components/ui/ErrorScreen'
 import { useState } from 'react'
-import GiteDescription from '@/components/pages/GiteDescription'
-import GiteEquipements from '@/components/pages/GiteEquipements'
+import GiteDescription from '@/components/gite/gitedescription/GiteDescription'
+import GiteEquipements from '@/components/gite/giteequipements/GiteEquipements'
 
 type GiteTab = 'description' | 'equipements'
 

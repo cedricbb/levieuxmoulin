@@ -11,16 +11,8 @@ import { useEffect, useState } from 'react'
 import * as ImagePickerExpo from 'expo-image-picker'
 import { X, Upload, Image as ImageIcon } from 'lucide-react-native'
 
-interface ImagePickerProps {
-  currentImage: string
-  onImageSelected: (imageUri: string) => void
-}
-
-export default function ImagePicker({
-  currentImage,
-  onImageSelected,
-}: ImagePickerProps) {
-  const [image, setImage] = useState<string | null>(currentImage)
+export default function ImagePicker({ currentImage, onImageSelected }) {
+  const [image, setImage] = useState(currentImage)
 
   useEffect(() => {
     setImage(currentImage)

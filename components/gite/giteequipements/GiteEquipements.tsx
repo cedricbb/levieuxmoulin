@@ -1,7 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native'
-import GiteItem from '../card/GiteItem'
-import GiteItemWithoutBullet from '../card/GitItemWithoutBullet'
-import Spacer from '../ui/Spacer'
+import { View, Text } from 'react-native'
+import GiteItem from '../../common/cards/gite/giteitem/GiteItem'
+import Spacer from '../../ui/Spacer'
 import {
   Bed,
   Utensils,
@@ -12,6 +11,7 @@ import {
   Fence,
   Baby,
 } from 'lucide-react-native'
+import styles from './giteequipements-style'
 
 export default function GiteEquipements() {
   return (
@@ -107,28 +107,3 @@ export default function GiteEquipements() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontFamily: 'Lora-Bold',
-    fontSize: 32,
-    color: '#5D4037',
-    marginBottom: 8,
-    marginTop: 16,
-    textAlign: 'left',
-  },
-  subTitle: {
-    fontFamily: 'Lora-Bold',
-    fontSize: 18,
-    color: '#8B5A2B',
-    marginBottom: 8,
-    marginTop: 16,
-  },
-  text: {
-    fontFamily: 'OpenSans-Regular',
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#333333',
-    marginBottom: 16,
-  },
-})

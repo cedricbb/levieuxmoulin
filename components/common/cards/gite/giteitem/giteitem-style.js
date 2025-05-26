@@ -1,22 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
-
-export default function GiteItem({ description }: { description: string }) {
-  const items = description
-    .split('\n')
-    .map((item) => item.trim())
-    .filter((item) => item.length > 0)
-
-  return (
-    <View style={styles.giteItem}>
-      {items.map((item, index) => (
-        <View key={index} style={styles.bulletItem}>
-          <Text style={styles.bulletPoint}>•</Text>
-          <Text style={styles.bulletText}>{item}</Text>
-        </View>
-      ))}
-    </View>
-  )
-}
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   giteItem: {
@@ -46,3 +28,5 @@ const styles = StyleSheet.create({
     color: '#555555',
   },
 })
+
+export default styles

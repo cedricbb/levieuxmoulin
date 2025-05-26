@@ -1,16 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
-
-export default function GiteItemWithoutBullet({
-  description,
-}: {
-  description: string
-}) {
-  return (
-    <View style={styles.giteItem}>
-      <Text style={styles.giteDescription}>{description}</Text>
-    </View>
-  )
-}
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   giteItem: {
@@ -27,3 +15,5 @@ const styles = StyleSheet.create({
     color: '#555555',
   },
 })
+
+export default styles

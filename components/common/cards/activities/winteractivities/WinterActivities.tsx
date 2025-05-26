@@ -1,7 +1,8 @@
 import { View, Image, Text, StyleSheet } from 'react-native'
-import ActivityItem from './ActivityItem'
-import { images } from '@/assets/images/images'
-import Spacer from '../ui/Spacer'
+import ActivityItem from '../activityitem/ActivityItem'
+import { images } from '../../../../../constants/images'
+import Spacer from '../../../../ui/Spacer'
+import styles from './winteractivities-style'
 
 export default function WinterActivities() {
   return (
@@ -84,37 +85,3 @@ export default function WinterActivities() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  headerImage: {
-    width: '100%',
-    height: 200,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  title: {
-    fontFamily: 'Lora-Bold',
-    fontSize: 24,
-    color: '#5D4037',
-    marginBottom: 12,
-  },
-  description: {
-    fontFamily: 'OpenSans-Regular',
-    fontSize: 15,
-    lineHeight: 24,
-    color: '#333333',
-    marginBottom: 24,
-  },
-  closingText: {
-    fontFamily: 'OpenSans-SemiBold',
-    fontSize: 15,
-    fontStyle: 'italic',
-    lineHeight: 22,
-    color: '#5D4037',
-    marginBottom: 24,
-    textAlign: 'center',
-    padding: 16,
-    backgroundColor: '#F0E5D8',
-    borderRadius: 8,
-  },
-})

@@ -1,29 +1,4 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
-import { images } from '@/assets/images/images'
-
-type ActivityItemProps = {
-  title: string
-  description: string
-  imageUrl: keyof typeof images
-}
-
-export default function ActivityItem({
-  title,
-  description,
-  imageUrl,
-}: ActivityItemProps) {
-  return (
-    <View style={styles.activityItem}>
-      <Text style={styles.activityTitle}>{title}</Text>
-      <Image
-        source={images[imageUrl]}
-        style={styles.activityImage}
-        resizeMode="cover"
-      />
-      <Text style={styles.activityDescription}>{description}</Text>
-    </View>
-  )
-}
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   activityItem: {
@@ -56,3 +31,5 @@ const styles = StyleSheet.create({
     color: '#555555',
   },
 })
+
+export default styles

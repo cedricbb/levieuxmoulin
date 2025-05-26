@@ -10,8 +10,8 @@ import { useState } from 'react'
 import { useContent } from '@/hooks/useContent'
 import LoadingScreen from '@/components/ui/LoadingScreen'
 import ErrorScreen from '@/components/ui/ErrorScreen'
-import SummerActivities from '@/components/card/SummerActivities'
-import WinterActivities from '@/components/card/WinterActivities'
+import SummerActivities from '@/components/common/cards/activities/summeractivities/SummerActivities'
+import WinterActivities from '@/components/common/cards/activities/winteractivities/WinterActivities'
 
 type Season = 'winter' | 'summer'
 
