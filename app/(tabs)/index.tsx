@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Image,
   ScrollView,
+  Button,
   TouchableOpacity,
 } from 'react-native'
 import { useContent } from '@/hooks/useContent'
