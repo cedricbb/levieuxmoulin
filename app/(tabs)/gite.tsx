@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useContent } from '@/hooks/useContent'
-import LoadingScreen from '@/components/ui/LoadingScreen'
-import ErrorScreen from '@/components/ui/ErrorScreen'
+import LoadingScreen from '@/components/Ui/LoadingScreen'
+import ErrorScreen from '@/components/Ui/ErrorScreen'
 import { useState } from 'react'
-import GiteDescription from '@/components/gite/gitedescription/GiteDescription'
-import GiteEquipements from '@/components/gite/giteequipements/GiteEquipements'
+import GiteDescription from '@/components/Gite/GiteDescription/GiteDescription'
+import GiteEquipements from '@/components/Gite/GiteEquipements/GiteEquipements'
 
 type GiteTab = 'description' | 'equipements'
 

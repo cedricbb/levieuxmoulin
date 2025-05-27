@@ -9,8 +9,8 @@ import {
 } from 'react-native'
 import { useState } from 'react'
 import { useContent } from '@/hooks/useContent'
-import LoadingScreen from '@/components/ui/LoadingScreen'
-import ErrorScreen from '@/components/ui/ErrorScreen'
+import LoadingScreen from '@/components/Ui/LoadingScreen'
+import ErrorScreen from '@/components/Ui/ErrorScreen'
 import ImagePicker from '@/components/admin/ImagePicker'
 
 export default function EditHomeScreen() {

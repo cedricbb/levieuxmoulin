@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native'
-import styles from './adminlogo-style'
+import styles from './AdminLogo.style'
 import { images } from '../../../../constants/images'
 
 export default function AdminLogo() {

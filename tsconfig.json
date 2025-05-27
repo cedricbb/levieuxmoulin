@@ -14,7 +14,8 @@
     "nativewind-env.d.ts",
     "constants/images.js",
     "app/(tabs)/index.jsx",
-    "components/admin/ImagePicker.jsx",
-    "components/common/cards/ActivityItem.jsx"
-, "components/common/cards/gite/giteitem/GiteItem.jsx"  ]
+    "components/Admin/ImagePicker.jsx",
+    "components/common/Cards/ActivityItem.jsx",
+    "components/common/Cards/Gite/GiteItem/GiteItem.jsx"
+, "components/common/Cards/Activities/summeractivities/SummerActivities.jsx", "components/common/Cards/Activities/winteractivities/WinterActivities.jsx", "components/common/Cards/Gite/GiteItemWithoutBullet/GitItemWithoutBullet.jsx", "components/Gite/GiteDescription/GiteDescription.jsx", "components/Gite/GiteEquipements/GiteEquipements.jsx", "components/Ui/ErrorScreen.jsx", "components/Ui/LoadingScreen.jsx", "components/Ui/Spacer.jsx"  ]
 }

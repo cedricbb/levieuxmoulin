@@ -8,10 +8,10 @@ import {
 } from 'react-native'
 import { useState } from 'react'
 import { useContent } from '@/hooks/useContent'
-import LoadingScreen from '@/components/ui/LoadingScreen'
-import ErrorScreen from '@/components/ui/ErrorScreen'
-import SummerActivities from '@/components/common/cards/activities/summeractivities/SummerActivities'
-import WinterActivities from '@/components/common/cards/activities/winteractivities/WinterActivities'
+import LoadingScreen from '@/components/Ui/LoadingScreen'
+import ErrorScreen from '@/components/Ui/ErrorScreen'
+import SummerActivities from '@/components/common/Cards/Activities/summeractivities/SummerActivities'
+import WinterActivities from '@/components/common/Cards/Activities/winteractivities/WinterActivities'
 
 type Season = 'winter' | 'summer'
 

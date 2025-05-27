@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
-import GiteItem from '../../common/cards/gite/giteitem/GiteItem'
-import Spacer from '../../ui/Spacer'
+import GiteItem from '../../common/Cards/Gite/GiteItem/GiteItem'
+import Spacer from '../../Ui/Spacer'
 import {
   Bed,
   Utensils,
@@ -11,7 +11,7 @@ import {
   Fence,
   Baby,
 } from 'lucide-react-native'
-import styles from './giteequipements-style'
+import styles from './GiteEquipements.style'
 
 export default function GiteEquipements() {
   return (

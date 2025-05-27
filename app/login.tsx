@@ -4,8 +4,8 @@ import {
   Platform,
   ScrollView,
 } from 'react-native'
-import AdminForm from '@/components/admin/login/form/AdminForm'
-import AdminLogo from '@/components/admin/login/logo/AdminLogo'
+import AdminForm from '@/components/Admin/Login/AdminForm/AdminForm'
+import AdminLogo from '@/components/Admin/Login/AdminLogo/AdminLogo'
 
 export default function LoginScreen() {
   return (

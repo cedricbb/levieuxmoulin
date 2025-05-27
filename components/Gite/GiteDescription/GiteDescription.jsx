@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native'
-import GiteItem from '../../common/cards/gite/giteitem/GiteItem'
-import GiteItemWithoutBullet from '../../common/cards/gite/giteitemwithoutbullet/GitItemWithoutBullet'
-import Spacer from '../../ui/Spacer'
-import styles from './gitedescription-style'
+import GiteItem from '../../common/Cards/Gite/GiteItem/GiteItem'
+import GiteItemWithoutBullet from '../../common/Cards/Gite/GiteItemWithoutBullet/GitItemWithoutBullet'
+import Spacer from '../../Ui/Spacer'
+import styles from './GiteDescription.style'
 
 export default function GiteDescription() {
   return (

@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useContent } from '@/hooks/useContent'
-import LoadingScreen from '@/components/ui/LoadingScreen'
-import ErrorScreen from '@/components/ui/ErrorScreen'
+import LoadingScreen from '@/components/Ui/LoadingScreen'
+import ErrorScreen from '@/components/Ui/ErrorScreen'
 import { images } from '../../constants/images'
 import { router } from 'expo-router'
 import { useAuthContext } from '@/contexts/AuthContext'

@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import styles from './giteitem-style'
+import styles from './GiteItem.style'
 
 export default function GiteItem({ description }) {
   const items = description

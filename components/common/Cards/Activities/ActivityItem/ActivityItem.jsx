@@ -1,6 +1,6 @@
 import { View, Text, Image } from 'react-native'
 import { images } from '../../../../../constants/images'
-import styles from './activity-slyle'
+import styles from './ActivityItem.style'
 
 export default function ActivityItem({ title, description, imageUrl }) {
   return (

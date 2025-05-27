@@ -1,7 +1,7 @@
 import { View, Image, Text } from 'react-native'
-import ActivityItem from '../activityitem/ActivityItem'
-import Spacer from '../../../../ui/Spacer'
-import styles from './summeractivities-style'
+import ActivityItem from '../ActivityItem/ActivityItem'
+import Spacer from '../../../../Ui/Spacer'
+import styles from './SummerActivities.style'
 
 export default function SummerActivities() {
   return (

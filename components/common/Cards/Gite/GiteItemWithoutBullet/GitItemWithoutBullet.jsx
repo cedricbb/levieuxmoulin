@@ -1,11 +1,7 @@
 import { View, Text } from 'react-native'
-import styles from './giteitemwithoutbullet-style'
+import styles from './GiteItemWithoutBullet.style'
 
-export default function GiteItemWithoutBullet({
-  description,
-}: {
-  description: string
-}) {
+export default function GiteItemWithoutBullet({ description }) {
   return (
     <View style={styles.giteItem}>
       <Text style={styles.giteDescription}>{description}</Text>

@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Eye, EyeOff } from 'lucide-react-native'
-import styles from './adminform-style'
+import styles from './AdminForm.style'
 import { COLORS } from '../../../../constants/theme'
 import { Alert } from 'react-native'
 import { useAuth } from '@/hooks/useAuth'

@@ -1,12 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import { CircleAlert as AlertCircle, RefreshCw } from 'lucide-react-native'
 
-interface ErrorScreenProps {
-  message: string
-  onRetry?: () => void
-}
-
-export default function ErrorScreen({ message, onRetry }: ErrorScreenProps) {
+export default function ErrorScreen({ message, onRetry }) {
   return (
     <View className="flex-1 items-center justify-center bg-base-100 p-6">
       <AlertCircle size={48} className="text-error" />

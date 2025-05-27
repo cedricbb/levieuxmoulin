@@ -1,8 +1,8 @@
 import { View, Image, Text, StyleSheet } from 'react-native'
-import ActivityItem from '../activityitem/ActivityItem'
+import ActivityItem from '../ActivityItem/ActivityItem'
 import { images } from '../../../../../constants/images'
-import Spacer from '../../../../ui/Spacer'
-import styles from './winteractivities-style'
+import Spacer from '../../../../Ui/Spacer'
+import styles from './WinterActivities.style'
 
 export default function WinterActivities() {
   return (
