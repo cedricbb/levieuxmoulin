@@ -6,7 +6,7 @@ export default function IndexRedirect() {
 
   useEffect(() => {
     // Redirige automatiquement vers la page d'accueil front
-    router.replace('/(tabs)')
+    router.replace('/(tabs)/HomeTab')
   }, [])
 
   return null

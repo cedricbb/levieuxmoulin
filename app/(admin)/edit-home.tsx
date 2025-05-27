@@ -11,7 +11,7 @@ import { useState } from 'react'
 import { useContent } from '@/hooks/useContent'
 import LoadingScreen from '@/components/Ui/LoadingScreen'
 import ErrorScreen from '@/components/Ui/ErrorScreen'
-import ImagePicker from '@/components/admin/ImagePicker'
+import ImagePicker from '@/components/Admin/ImagePicker'
 
 export default function EditHomeScreen() {
   const { content, isLoading, error, updateContent } = useContent('home')
@@ -48,7 +48,7 @@ export default function EditHomeScreen() {
   const [isSaving, setIsSaving] = useState(false)
 
   if (isLoading) return <LoadingScreen />
-  if (error) return <ErrorScreen message={error} />
+  if (error) return <ErrorScreen message={error} onRetry={() => {}} />
 
   const updateHighlight = (index: number, field: string, value: string) => {
     const updatedHighlights = [...highlights]

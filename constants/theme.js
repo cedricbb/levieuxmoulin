@@ -17,6 +17,7 @@ const SIZES = {
   xs: 12,
   s: 14,
   sm: 16,
+  ml: 18,
   md: 20,
   lg: 24,
   xl: 28,

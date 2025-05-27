@@ -23,7 +23,7 @@ export default function InfosScreen() {
   const { content, isLoading, error } = useContent('infos')
 
   if (isLoading) return <LoadingScreen />
-  if (error) return <ErrorScreen message={error} />
+  if (error) return <ErrorScreen message={error} onRetry={() => {}} />
 
   const openMap = () => {
     const address = 'Le Vieux Moulin, Chinaillon, Le Grand-Bornand, France'

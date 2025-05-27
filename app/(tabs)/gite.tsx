@@ -19,7 +19,7 @@ export default function GiteScreen() {
   const { content, isLoading, error } = useContent('gite')
 
   if (isLoading) return <LoadingScreen />
-  if (error) return <ErrorScreen message={error} />
+  if (error) return <ErrorScreen message={error} onRetry={() => {}} />
 
   return (
     <View style={styles.container}>

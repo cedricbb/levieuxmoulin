@@ -87,7 +87,7 @@ export default function GalleryScreen() {
   const { content, isLoading, error } = useContent('gallery')
 
   if (isLoading) return <LoadingScreen />
-  if (error) return <ErrorScreen message={error} />
+  if (error) return <ErrorScreen message={error} onRetry={() => {}} />
 
   const handleImagePress = (index: number) => {
     setSelectedImage(index)

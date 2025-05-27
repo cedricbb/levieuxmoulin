@@ -20,7 +20,7 @@ export default function ActivitiesScreen() {
   const { content, isLoading, error } = useContent('activities')
 
   if (isLoading) return <LoadingScreen />
-  if (error) return <ErrorScreen message={error} />
+  if (error) return <ErrorScreen message={error} onRetry={() => {}} />
 
   return (
     <View style={styles.container}>
