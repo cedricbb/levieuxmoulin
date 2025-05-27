@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { COLORS } from '@/constants/theme'
 
 const styles = StyleSheet.create({
   logoContainer: {
@@ -12,14 +13,14 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   title: {
-    fontFamily: 'Lora-Bold',
+    fontFamily: 'poppinsBold',
     fontSize: 28,
-    color: '#5D4037',
+    color: COLORS.primary,
   },
   subtitle: {
-    fontFamily: 'Lora-Regular',
+    fontFamily: 'poppinsSemiBold',
     fontSize: 18,
-    color: '#8B5A2B',
+    color: COLORS.secondary,
     marginTop: 4,
   },
 })

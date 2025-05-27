@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { COLORS } from '@/constants/theme'
 
 const styles = StyleSheet.create({
   headerImage: {
@@ -8,28 +9,28 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   title: {
-    fontFamily: 'Lora-Bold',
+    fontFamily: 'poppinsBold',
     fontSize: 24,
-    color: '#5D4037',
+    color: COLORS.primary,
     marginBottom: 12,
   },
   description: {
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'interRegular',
     fontSize: 15,
     lineHeight: 24,
-    color: '#333333',
+    color: COLORS.davyGrey,
     marginBottom: 24,
   },
   closingText: {
-    fontFamily: 'OpenSans-SemiBold',
+    fontFamily: 'interRegular',
     fontSize: 15,
     fontStyle: 'italic',
     lineHeight: 22,
-    color: '#5D4037',
+    color: COLORS.primary,
     marginBottom: 24,
     textAlign: 'center',
     padding: 16,
-    backgroundColor: '#F0E5D8',
+    backgroundColor: COLORS.tertiary,
     borderRadius: 8,
   },
 })

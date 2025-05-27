@@ -1,3 +1,5 @@
+import { useFonts } from 'expo-font'
+
 const COLORS = {
   primary: '#5D4037',
   secondary: '#8B5A2B',

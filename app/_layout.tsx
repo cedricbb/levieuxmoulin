@@ -14,14 +14,10 @@ export default function RootLayout() {
   useFrameworkReady()
 
   const [fontsLoaded, fontError] = useFonts({
-    'Lora-Regular':
-      'https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787weuyJGmKxemMeZ.ttf',
-    'Lora-Bold':
-      'https://fonts.gstatic.com/s/lora/v32/0QI6MX1D_JOuGQbT0gvTJPa787z5vCJGmKxemMeZ.ttf',
-    'OpenSans-Regular':
-      'https://fonts.gstatic.com/s/opensans/v35/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0C4nY1M2xLER.ttf',
-    'OpenSans-SemiBold':
-      'https://fonts.gstatic.com/s/opensans/v35/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1y4nY1M2xLER.ttf',
+    poppinsBold: require('../assets/fonts/Poppins-Bold.ttf'),
+    poppinsSemiBold: require('../assets/fonts/Poppins-SemiBold.ttf'),
+    interMedium: require('../assets/fonts/Inter-Medium.ttf'),
+    interRegular: require('../assets/fonts/Inter-Regular.ttf'),
   })
 
   useEffect(() => {

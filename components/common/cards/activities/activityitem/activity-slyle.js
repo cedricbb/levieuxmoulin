@@ -1,21 +1,22 @@
 import { StyleSheet } from 'react-native'
+import { COLORS } from '@/constants/theme'
 
 const styles = StyleSheet.create({
   activityItem: {
     marginBottom: 24,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.white,
     borderRadius: 8,
     padding: 16,
-    shadowColor: '#000',
+    shadowColor: COLORS.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
   },
   activityTitle: {
-    fontFamily: 'Lora-Bold',
+    fontFamily: 'poppinsBold',
     fontSize: 18,
-    color: '#8B5A2B',
+    color: COLORS.secondary,
     marginBottom: 12,
   },
   activityImage: {
@@ -25,10 +26,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   activityDescription: {
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'interRegular',
     fontSize: 14,
     lineHeight: 22,
-    color: '#555555',
+    color: COLORS.davyGrey,
   },
 })
 

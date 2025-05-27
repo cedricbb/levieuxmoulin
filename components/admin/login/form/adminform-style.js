@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   label: {
-    fontFamily: 'OpenSans-SemiBold',
+    fontFamily: 'interRegular',
     fontSize: SIZES.s,
     color: COLORS.davyGrey,
     marginBottom: SIZES.xxs,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.sm,
     paddingVertical: SIZES.xs,
     marginBottom: SIZES.sm,
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'interRegular',
     fontSize: SIZES.sm,
   },
   passwordContainer: {
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.sm,
     paddingVertical: SIZES.xs,
     paddingRight: 48,
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'interRegular',
     fontSize: SIZES.sm,
   },
   eyeButton: {
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.darkvanilla,
   },
   loginButtonText: {
-    fontFamily: 'OpenSans-SemiBold',
+    fontFamily: 'interSemiBold',
     fontSize: SIZES.sm,
     color: COLORS.white,
   },

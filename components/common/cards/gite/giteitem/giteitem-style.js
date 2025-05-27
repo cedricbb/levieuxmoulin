@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native'
+import { COLORS } from '@/constants/theme'
 
 const styles = StyleSheet.create({
   giteItem: {
     marginBottom: 12,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.white,
     borderRadius: 8,
     padding: 12,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', // Ignoré par React Native mais utile pour migration web
@@ -16,16 +17,16 @@ const styles = StyleSheet.create({
   bulletPoint: {
     fontSize: 18,
     lineHeight: 22,
-    color: '#8B5A2B',
+    color: COLORS.secondary,
     marginRight: 8,
     marginTop: 1,
   },
   bulletText: {
     flex: 1,
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'interRegular',
     fontSize: 14,
     lineHeight: 22,
-    color: '#555555',
+    color: COLORS.davyGrey,
   },
 })
 

@@ -1,26 +1,27 @@
 import { StyleSheet } from 'react-native'
+import { COLORS } from '@/constants/theme'
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: 'Lora-Bold',
+    fontFamily: 'poppinsBold',
     fontSize: 32,
-    color: '#5D4037',
+    color: COLORS.primary,
     marginBottom: 8,
     marginTop: 16,
     textAlign: 'left',
   },
   subTitle: {
-    fontFamily: 'Lora-Bold',
+    fontFamily: 'poppinsBold',
     fontSize: 18,
-    color: '#8B5A2B',
+    color: COLORS.secondary,
     marginBottom: 8,
     marginTop: 16,
   },
   text: {
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'interRegular',
     fontSize: 16,
     lineHeight: 24,
-    color: '#333333',
+    color: COLORS.davyGrey,
     marginBottom: 16,
   },
 })
