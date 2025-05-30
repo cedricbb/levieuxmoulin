@@ -10,6 +10,7 @@ const COLORS = {
   seashell: '#F9F5F0',
   davyGrey: '#555555',
   darkvanilla: '#CCBBAA',
+  spanishGray: '#999999'
 }
 
 const SIZES = {

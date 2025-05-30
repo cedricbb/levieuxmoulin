@@ -26,5 +26,5 @@
     "components/Ui/LoadingScreen.jsx",
     "components/Ui/Spacer.jsx",
     "app/index.jsx"
-, "app/(tabs)/gite.jsx"  ]
+, "app/(tabs)/gite.jsx", "app/(tabs)/activities.jsx", "app/(tabs)/gallery.jsx"  ]
 }
