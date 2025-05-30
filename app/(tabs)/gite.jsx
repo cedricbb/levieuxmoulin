@@ -1,9 +1,7 @@
 import {
   View,
-  Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
 } from 'react-native'
 import { useContent } from '@/hooks/useContent'
 import LoadingScreen from '@/components/Ui/LoadingScreen'
@@ -11,11 +9,11 @@ import ErrorScreen from '@/components/Ui/ErrorScreen'
 import { useState } from 'react'
 import GiteDescription from '@/components/Gite/GiteDescription/GiteDescription'
 import GiteEquipements from '@/components/Gite/GiteEquipements/GiteEquipements'
-
-type GiteTab = 'description' | 'equipements'
+import DescriptionButton from '@/components/Gite/Button/Description/Description'
+import EquipementsButton from '@/components/Gite/Button/Equipements/Equipements'
 
 export default function GiteScreen() {
-  const [tab, setTab] = useState<GiteTab>('description')
+  const [tab, setTab] = useState('description')
   const { content, isLoading, error } = useContent('gite')
 
   if (isLoading) return <LoadingScreen />
@@ -24,38 +22,8 @@ export default function GiteScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.giteToggle}>
-        <TouchableOpacity
-          style={[
-            styles.giteButton,
-            tab === 'description' && styles.giteButtonActive,
-          ]}
-          onPress={() => setTab('description')}
-        >
-          <Text
-            style={[
-              styles.giteButtonText,
-              tab === 'description' && styles.giteButtonTextActive,
-            ]}
-          >
-            Description
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.giteButton,
-            tab === 'equipements' && styles.giteButtonActive,
-          ]}
-          onPress={() => setTab('equipements')}
-        >
-          <Text
-            style={[
-              styles.giteButtonText,
-              tab === 'equipements' && styles.giteButtonTextActive,
-            ]}
-          >
-            Équipements
-          </Text>
-        </TouchableOpacity>
+        <DescriptionButton tab={tab} setTab={setTab} />
+        <EquipementsButton tab={tab} setTab={setTab} />
       </View>
       <ScrollView style={styles.contentContainer}>
         {tab === 'description' ? <GiteDescription /> : <GiteEquipements />}
@@ -76,24 +44,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderBottomColor: '#E0E0E0',
-  },
-  giteButton: {
-    flex: 1,
-    paddingVertical: 16,
-    alignItems: 'center',
-  },
-  giteButtonActive: {
-    borderBottomWidth: 3,
-    borderBottomColor: '#8B5A2B',
-  },
-  giteButtonText: {
-    fontFamily: 'Lora-Regular',
-    fontSize: 16,
-    color: '#555555',
-  },
-  giteButtonTextActive: {
-    fontFamily: 'Lora-Bold',
-    color: '#8B5A2B',
   },
   subTitle: {
     fontFamily: 'Lora-Bold',
