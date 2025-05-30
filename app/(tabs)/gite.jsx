@@ -11,6 +11,7 @@ import GiteDescription from '@/components/Gite/GiteDescription/GiteDescription'
 import GiteEquipements from '@/components/Gite/GiteEquipements/GiteEquipements'
 import DescriptionButton from '@/components/Gite/Button/Description/Description'
 import EquipementsButton from '@/components/Gite/Button/Equipements/Equipements'
+import Spacer from '@/components/Ui/Spacer'
 
 export default function GiteScreen() {
   const [tab, setTab] = useState('description')
@@ -28,6 +29,7 @@ export default function GiteScreen() {
       <ScrollView style={styles.contentContainer}>
         {tab === 'description' ? <GiteDescription /> : <GiteEquipements />}
       </ScrollView>
+      <Spacer height={72} />
     </View>
   )
 }
