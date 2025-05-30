@@ -1,23 +1,24 @@
 import { StyleSheet } from 'react-native'
+import { COLORS, SIZES } from '@/constants/theme'
 
 const styles = StyleSheet.create({
     giteButton: {
         flex: 1,
-        paddingVertical: 16,
+        paddingVertical: SIZES.sm,
         alignItems: 'center',
       },
       giteButtonActive: {
         borderBottomWidth: 3,
-        borderBottomColor: '#8B5A2B',
+        borderBottomColor: COLORS.primary,
       },
       giteButtonText: {
-        fontFamily: 'Lora-Regular',
-        fontSize: 16,
-        color: '#555555',
+        fontFamily: 'interRegular',
+        fontSize: SIZES.sm,
+        color: COLORS.davyGrey,
       },
       giteButtonTextActive: {
-        fontFamily: 'Lora-Bold',
-        color: '#8B5A2B',
+        fontFamily: 'interMedium',
+        color: COLORS.primary,
       },
     })
 
