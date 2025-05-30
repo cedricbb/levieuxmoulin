@@ -1,37 +1,55 @@
 import { Tabs } from 'expo-router'
 import { SafeAreaView, useColorScheme } from 'react-native'
 import {
-  House as Home,
+  Home,
   Building2,
   Bike,
   Image as ImageIcon,
   Info,
   CalendarClock,
 } from 'lucide-react-native'
+import { BlurView } from 'expo-blur'
+import { COLORS } from '@/constants/theme'
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
+  const isDark = colorScheme === 'dark'
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: '#8B5A2B', // Warm brown color for active tab
-          tabBarInactiveTintColor: '#777777',
+          tabBarActiveTintColor: COLORS.secondary,
+          tabBarInactiveTintColor: COLORS.davyGrey,
           tabBarStyle: {
-            backgroundColor: colorScheme === 'dark' ? '#1A1A1A' : '#FFFFFF',
-            borderTopColor: colorScheme === 'dark' ? '#333333' : '#EEEEEE',
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 84,
+            paddingBottom: 20,
+            paddingTop: 12,
+            backgroundColor: isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)',
+            borderTopWidth: 0,
+          },
+          tabBarBackground: () => (
+            <BlurView
+              tint={isDark ? 'dark' : 'light'}
+              intensity={80}
+              style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+            />
+          ),
+          headerStyle: {
+            backgroundColor: isDark ? COLORS.black : COLORS.seashell,
+          },
+          headerTintColor: isDark ? COLORS.white : COLORS.primary,
+          headerTitleStyle: {
+            fontFamily: 'poppinsBold',
           },
           tabBarLabelStyle: {
+            fontFamily: 'interMedium',
             fontSize: 12,
-            fontWeight: '500',
-          },
-          headerStyle: {
-            backgroundColor: colorScheme === 'dark' ? '#222222' : '#F9F5F0',
-          },
-          headerTintColor: colorScheme === 'dark' ? '#FFFFFF' : '#8B5A2B',
-          headerTitleStyle: {
-            fontWeight: 'bold',
+            marginTop: 4,
           },
         }}
       >
