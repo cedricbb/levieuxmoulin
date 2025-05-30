@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '@/constants/theme'
+import { COLORS, SIZES } from '@/constants/theme'
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: 'poppinsBold',
+    fontFamily: 'outfitBold',
     fontSize: 32,
     color: COLORS.primary,
     marginBottom: 8,
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   subTitle: {
-    fontFamily: 'poppinsBold',
+    fontFamily: 'outfitBold',
     fontSize: 18,
     color: COLORS.secondary,
     marginBottom: 8,
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: COLORS.davyGrey,
     marginBottom: 16,
+    paddingHorizontal: SIZES.sm,
   },
 })
 

@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.seashell,
   },
   contentContainer: {
-    padding: SIZES.lg,
+    paddingVertical: SIZES.xxl,
+    paddingHorizontal: SIZES.lg,
   },
 })

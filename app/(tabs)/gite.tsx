@@ -11,6 +11,7 @@ import ErrorScreen from '@/components/Ui/ErrorScreen'
 import { useState } from 'react'
 import GiteDescription from '@/components/Gite/GiteDescription/GiteDescription'
 import GiteEquipements from '@/components/Gite/GiteEquipements/GiteEquipements'
+import { SIZES } from '@/constants/theme'
 
 type GiteTab = 'description' | 'equipements'
 
@@ -70,7 +71,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9F5F0',
   },
   contentContainer: {
-    padding: 24,
+ paddingVertical: SIZES.xxl,
+ paddingHorizontal: SIZES.lg,
   },
   giteToggle: {
     flexDirection: 'row',
@@ -87,23 +89,23 @@ const styles = StyleSheet.create({
     borderBottomColor: '#8B5A2B',
   },
   giteButtonText: {
-    fontFamily: 'Lora-Regular',
+    fontFamily: 'interRegular',
     fontSize: 16,
     color: '#555555',
   },
   giteButtonTextActive: {
-    fontFamily: 'Lora-Bold',
+    fontFamily: 'outfitBold',
     color: '#8B5A2B',
   },
   subTitle: {
-    fontFamily: 'Lora-Bold',
+    fontFamily: 'outfitBold',
     fontSize: 18,
     color: '#8B5A2B',
     marginBottom: 8,
     marginTop: 16,
   },
   text: {
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'interRegular',
     fontSize: 16,
     lineHeight: 24,
     color: '#333333',

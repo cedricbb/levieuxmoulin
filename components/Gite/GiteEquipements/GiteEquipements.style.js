@@ -3,7 +3,7 @@ import { COLORS } from '@/constants/theme'
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: 'poppinsBold',
+    fontFamily: 'outfitBold',
     fontSize: 32,
     color: COLORS.primary,
     marginBottom: 8,

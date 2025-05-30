@@ -4,9 +4,17 @@ import { COLORS, SIZES } from '@/constants/theme'
 const styles = StyleSheet.create({
   highlightItem: {
     marginBottom: SIZES.md,
+    padding: SIZES.md,
+    borderRadius: SIZES.sm,
+    backgroundColor: COLORS.white,
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3, // for Android shadow
   },
   highlightTitle: {
-    fontFamily: 'poppinsSemiBold',
+    fontFamily: 'outfitSemiBold',
     fontSize: SIZES.ml,
     color: COLORS.secondary,
     marginBottom: SIZES.xxs,

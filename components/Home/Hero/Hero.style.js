@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.4)',
   },
   heroTitle: {
-    fontFamily: 'poppinsBold',
+    fontFamily: 'outfitBold',
     fontSize: SIZES.xxl,
     color: 'white',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 3,
   },
   heroSubtitle: {
-    fontFamily: 'poppinsSemiBold',
+    fontFamily: 'outfitSemiBold',
     fontSize: SIZES.md,
     color: 'white',
     marginTop: 4,

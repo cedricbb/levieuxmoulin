@@ -3,8 +3,7 @@ import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useFrameworkReady } from '@/hooks/useFrameworkReady'
 import { useFonts } from 'expo-font'
-import { SplashScreen } from 'expo-router'
-import { AuthProvider } from '@/contexts/AuthContext'
+import { SplashScreen, Stack } from 'expo-router'
 import { ContentProvider } from '@/contexts/ContentContext'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete
@@ -13,12 +12,7 @@ SplashScreen.preventAutoHideAsync()
 export default function RootLayout() {
   useFrameworkReady()
 
-  const [fontsLoaded, fontError] = useFonts({
-    poppinsBold: require('../assets/fonts/Poppins-Bold.ttf'),
-    poppinsSemiBold: require('../assets/fonts/Poppins-SemiBold.ttf'),
-    interMedium: require('../assets/fonts/Inter-Medium.ttf'),
-    interRegular: require('../assets/fonts/Inter-Regular.ttf'),
-  })
+  const { fontsLoaded, fontError } = useFonts()
 
   useEffect(() => {
     if (fontsLoaded || fontError) {

@@ -2,11 +2,8 @@ import { StyleSheet } from 'react-native'
 import { COLORS, SIZES } from '@/constants/theme'
 
 const styles = StyleSheet.create({
-    contentContainer: {
-        padding: SIZES.lg,
-      },
       welcomeTitle: {
-        fontFamily: 'poppinsBold',
+        fontFamily: 'outfitBold',
         fontSize: SIZES.lg,
         color: COLORS.primary,
         marginBottom: SIZES.sm,
