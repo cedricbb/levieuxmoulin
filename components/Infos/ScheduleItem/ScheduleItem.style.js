@@ -1,26 +1,27 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native'
+import { SIZES, COLORS } from '@/constants/theme'
 
 const styles = StyleSheet.create({
-    scheduleItem: {
-        flexDirection: 'row',
-        marginBottom: 20,
-      },
-      scheduleTextContainer: {
-        marginLeft: 12,
-        flex: 1,
-      },
-      scheduleTitle: {
-        fontFamily: 'Lora-Bold',
-        fontSize: 16,
-        color: '#8B5A2B',
-        marginBottom: 8,
-      },
-      scheduleText: {
-        fontFamily: 'OpenSans-Regular',
-        fontSize: 14,
-        lineHeight: 20,
-        color: '#555555',
-      },
-    })
+  scheduleItem: {
+    flexDirection: 'row',
+    marginBottom: SIZES.md,
+  },
+  scheduleTextContainer: {
+    marginLeft: SIZES.xs,
+    flex: 1,
+  },
+  scheduleTitle: {
+    fontFamily: 'poppinsBold',
+    fontSize: SIZES.sm,
+    color: COLORS.secondary,
+    marginBottom: SIZES.xxs,
+  },
+  scheduleText: {
+    fontFamily: 'interRegular',
+    fontSize: SIZES.s,
+    lineHeight: SIZES.md,
+    color: COLORS.davyGrey,
+  },
+})
 
 export default styles
