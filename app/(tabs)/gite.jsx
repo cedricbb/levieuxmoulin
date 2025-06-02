@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F9F5F0',
+    marginBottom: 96,
   },
   contentContainer: {
     padding: 24,

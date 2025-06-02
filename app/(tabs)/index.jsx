@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.seashell,
+    marginBottom: 72,
   },
   contentContainer: {
     padding: SIZES.lg,

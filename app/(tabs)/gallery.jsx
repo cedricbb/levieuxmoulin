@@ -11,6 +11,7 @@ import ErrorScreen from '@/components/Ui/ErrorScreen'
 import GalleryList from '@/components/Gallery/GalleryList/GalleryList'
 import GalleryModal from '@/components/Gallery/GalleryModal/GalleryModal'
 import { COLORS } from '@/constants/theme'
+import Spacer from '@/components/Ui/Spacer'
 
 const { width, height } = Dimensions.get('window')
 
@@ -113,6 +114,7 @@ export default function GalleryScreen() {
         selectedIndex={selectedImage}
         onNavigate={handleNavigate}
       />
+      <Spacer height={72} />
     </View>
   )
 }
@@ -122,6 +124,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.seashell,
     padding: 20,
+    marginBottom: 72,
   },
   title: {
     fontFamily: 'poppinsBold',

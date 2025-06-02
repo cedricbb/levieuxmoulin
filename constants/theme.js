@@ -10,7 +10,9 @@ const COLORS = {
   seashell: '#F9F5F0',
   davyGrey: '#555555',
   darkvanilla: '#CCBBAA',
-  spanishGray: '#999999'
+  spanishGray: '#999999',
+  brightGray: '#E8F1F2',
+  gainsboro: '#D1E3E5'
 }
 
 const SIZES = {

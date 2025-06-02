@@ -11,6 +11,7 @@ import Summer from '@/components/Activities/Button/Summer/Summer'
 import Winter from '@/components/Activities/Button/Winter/Winter'
 import SummerActivities from '@/components/common/Cards/Activities/summeractivities/SummerActivities'
 import WinterActivities from '@/components/common/Cards/Activities/winteractivities/WinterActivities'
+import Spacer from '@/components/Ui/Spacer'
 
 export default function ActivitiesScreen() {
   const [season, setSeason] = useState('winter')
@@ -29,6 +30,7 @@ export default function ActivitiesScreen() {
       <ScrollView style={styles.contentContainer}>
         {season === 'winter' ? <WinterActivities /> : <SummerActivities />}
       </ScrollView>
+      <Spacer height={72} />
     </View>
   )
 }
@@ -37,6 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F9F5F0',
+    marginBottom: 72,
   },
   seasonToggle: {
     flexDirection: 'row',
