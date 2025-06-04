@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router'
-import { useColorScheme } from 'react-native'
+import { useColorScheme, View } from 'react-native'
 import {
   Home,
   Building2,
@@ -7,6 +7,7 @@ import {
   Image as ImageIcon,
   Info,
   CalendarClock,
+  Settings,
 } from 'lucide-react-native'
 import { BlurView } from 'expo-blur'
 import { COLORS } from '@/constants/theme'
@@ -17,16 +18,65 @@ export default function TabLayout() {
   const colorScheme = useColorScheme()
   const isDark = colorScheme === 'dark'
   const insets = useSafeAreaInsets()
+  
   const TabBarStyle: ViewStyle = {
     position: 'absolute',
     bottom: 0,
-    left: 0,
-    right: 0,
-    height: 64 + insets.bottom,
-    paddingBottom: insets.bottom,
-    paddingTop: 12,
-    backgroundColor: isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)',
+    left: 20,
+    right: 20,
+    height: 80,
+    paddingBottom: Math.max(insets.bottom - 10, 10),
+    paddingTop: 0,
+    backgroundColor: 'transparent',
     borderTopWidth: 0,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 16,
+    elevation: 12,
+  }
+
+  // Custom tab bar icon with special styling for center tab
+  const renderTabIcon = (routeName: string, focused: boolean, color: string, size: number) => {
+    const isCenter = routeName === 'reservation' // Make activities the center prominent tab
+    
+    if (isCenter) {
+      return (
+        <View style={{
+          width: 60,
+          height: 60,
+          borderRadius: 40,
+          backgroundColor: COLORS.secondary,
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: -50,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.3,
+          shadowRadius: 8,
+          elevation: 8,
+        }}>
+          <CalendarClock size={28} color="white" />
+        </View>
+      )
+    }
+
+    // Regular icons for other tabs
+    const IconComponent = {
+      index: Home,
+      gite: Building2,
+      gallery: ImageIcon,
+      infos: Info,
+      activities: Bike,
+      reservation: CalendarClock,
+      administration: Settings,
+    }[routeName]
+
+    return IconComponent ? <IconComponent size={size} color={color} /> : null
   }
 
   return (
@@ -38,13 +88,16 @@ export default function TabLayout() {
         tabBarBackground: () => (
           <BlurView
             tint={isDark ? 'dark' : 'light'}
-            intensity={80}
+            intensity={100}
             style={{
               position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
               bottom: 0,
+              backgroundColor: isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.95)',
+              borderRadius: 25,
+              overflow: 'hidden',
             }}
           />
         ),
@@ -57,8 +110,11 @@ export default function TabLayout() {
         },
         tabBarLabelStyle: {
           fontFamily: 'interMedium',
-          fontSize: 12,
-          marginTop: 4,
+          fontSize: 11,
+          marginTop: 2,
+        },
+        tabBarItemStyle: {
+          paddingVertical: 8,
         },
       }}
     >
@@ -66,7 +122,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Accueil',
-          tabBarIcon: ({ size, color }) => <Home size={size} color={color} />,
+          tabBarIcon: ({ focused, color, size }) => renderTabIcon('index', focused, color, size),
           headerTitle: 'Le Vieux Moulin',
         }}
       />
@@ -74,41 +130,44 @@ export default function TabLayout() {
         name="gite"
         options={{
           title: 'Le Gîte',
-          tabBarIcon: ({ size, color }) => (
-            <Building2 size={size} color={color} />
-          ),
+          tabBarIcon: ({ focused, color, size }) => renderTabIcon('gite', focused, color, size),
         }}
       />
       <Tabs.Screen
         name="activities"
         options={{
           title: 'Activités',
-          tabBarIcon: ({ size, color }) => <Bike size={size} color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="gallery"
-        options={{
-          title: 'Galerie',
-          tabBarIcon: ({ size, color }) => (
-            <ImageIcon size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="infos"
-        options={{
-          title: 'Infos',
-          tabBarIcon: ({ size, color }) => <Info size={size} color={color} />,
+          tabBarIcon: ({ focused, color, size }) => renderTabIcon('activities', focused, color, size),
         }}
       />
       <Tabs.Screen
         name="reservation"
         options={{
           title: 'Réserver',
-          tabBarIcon: ({ size, color }) => (
-            <CalendarClock size={size} color={color} />
-          ),
+          tabBarIcon: ({ focused, color, size }) => renderTabIcon('reservation', focused, color, size),
+          tabBarLabel: '',
+        }}
+      />
+      <Tabs.Screen
+        name="gallery"
+        options={{
+          title: 'Galerie',
+          tabBarIcon: ({ focused, color, size }) => renderTabIcon('gallery', focused, color, size),
+        
+        }}
+      />
+      <Tabs.Screen
+        name="infos"
+        options={{
+          title: 'Infos',
+          tabBarIcon: ({ focused, color, size }) => renderTabIcon('infos', focused, color, size),
+        }}
+      />
+      <Tabs.Screen
+        name="administration"
+        options={{
+          title: 'Admin',
+          tabBarIcon: ({ focused, color, size }) => renderTabIcon('administration', focused, color, size),
         }}
       />
     </Tabs>

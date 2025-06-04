@@ -8,8 +8,22 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "statusBar": {
+      "style": "auto",
+      "hidden": true,
+      "translucent": true
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "statusBarStyle": "auto"
+    },
+    "android": {
+      "package": "com.cedricbillard.levieuxmoulin",
+      "statusBar": {
+        "translucent": true,
+        "backgroundColor": "transparent",
+        "hidden": true
+      }
     },
     "web": {
       "bundler": "metro",
@@ -25,9 +39,6 @@
       "eas": {
         "projectId": "d98a17a8-3273-4247-a212-5f40393511e4"
       }
-    },
-    "android": {
-      "package": "com.cedricbillard.levieuxmoulin"
     }
   }
 }
