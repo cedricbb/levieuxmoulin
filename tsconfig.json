@@ -26,5 +26,5 @@
     "components/Ui/LoadingScreen.jsx",
     "components/Ui/Spacer.jsx",
     "app/index.jsx"
-, "app/(tabs)/gite.jsx", "app/(tabs)/activities.jsx", "app/(tabs)/gallery.jsx", "app/(tabs)/infos.jsx"  ]
+, "app/(tabs)/gite.jsx", "app/(tabs)/activities.jsx", "app/(tabs)/gallery.jsx", "app/(tabs)/infos.jsx", "app/login.jsx", "app/(_auth)/_layout.jsx", "app/(admin)/_layout.jsx", "app/(tabs)/_layout.jsx", "app/(admin)/index.jsx", "contexts/AuthContext.jsx"  ]
 }

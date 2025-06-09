@@ -6,29 +6,17 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useRouter } from 'expo-router'
-import { useAuth } from '@/hooks/useAuth'
 import {
   Home,
   Building2,
   Bike,
   Image as ImageIcon,
   Info,
-  LogOut,
   CreditCard as Edit3,
 } from 'lucide-react-native'
 
 export default function AdminDashboard() {
   const router = useRouter()
-  const { logout } = useAuth()
-
-  const handleLogout = async () => {
-    await logout()
-    router.replace('/login')
-  }
-
-  const userview = () => {
-    router.replace('/(tabs)')
-  }
 
   return (
     <ScrollView style={styles.container}>
@@ -120,15 +108,6 @@ export default function AdminDashboard() {
           <Edit3 size={20} color="#8B5A2B" />
         </TouchableOpacity>
       </View>
-
-      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-        <LogOut size={20} color="#FFFFFF" />
-        <Text style={styles.logoutButtonText}>Déconnexion</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.logoutButton} onPress={userview}>
-        <LogOut size={20} color="#FFFFFF" />
-        <Text style={styles.logoutButtonText}>Voir le site</Text>
-      </TouchableOpacity>
     </ScrollView>
   )
 }
@@ -207,6 +186,21 @@ const styles = StyleSheet.create({
   },
   logoutButtonText: {
     fontFamily: 'OpenSans-SemiBold',
+    fontSize: 16,
+    color: '#FFFFFF',
+    marginLeft: 8,
+  },
+  viewButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#8B5A2B',
+    borderRadius: 8,
+    padding: 14,
+    margin: 24,
+  },
+  viewButtonText: {
+    fontFamily: 'interRegular',
     fontSize: 16,
     color: '#FFFFFF',
     marginLeft: 8,

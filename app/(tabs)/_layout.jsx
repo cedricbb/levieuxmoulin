@@ -7,7 +7,7 @@ import {
   Image as ImageIcon,
   Info,
   CalendarClock,
-  Settings,
+  User,
 } from 'lucide-react-native'
 import { BlurView } from 'expo-blur'
 import { COLORS } from '@/constants/theme'
@@ -19,7 +19,7 @@ export default function TabLayout() {
   const isDark = colorScheme === 'dark'
   const insets = useSafeAreaInsets()
   
-  const TabBarStyle: ViewStyle = {
+  const TabBarStyle = {
     position: 'absolute',
     bottom: 0,
     left: 20,
@@ -41,7 +41,7 @@ export default function TabLayout() {
   }
 
   // Custom tab bar icon with special styling for center tab
-  const renderTabIcon = (routeName: string, focused: boolean, color: string, size: number) => {
+  const renderTabIcon = (routeName, focused, color, size) => {
     const isCenter = routeName === 'reservation' // Make activities the center prominent tab
     
     if (isCenter) {
@@ -73,7 +73,7 @@ export default function TabLayout() {
       infos: Info,
       activities: Bike,
       reservation: CalendarClock,
-      administration: Settings,
+      account: User,
     }[routeName]
 
     return IconComponent ? <IconComponent size={size} color={color} /> : null
@@ -164,10 +164,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="administration"
+        name="account"
         options={{
-          title: 'Admin',
-          tabBarIcon: ({ focused, color, size }) => renderTabIcon('administration', focused, color, size),
+          title: 'Compte',
+          tabBarIcon: ({ focused, color, size }) => renderTabIcon('account', focused, color, size),
         }}
       />
     </Tabs>

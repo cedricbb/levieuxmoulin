@@ -1,20 +1,29 @@
-import { Stack } from 'expo-router';
-import { useAuthContext } from '@/contexts/AuthContext';
-import { useEffect } from 'react';
-import { useRouter } from 'expo-router';
+import { Stack } from 'expo-router'
+import { useAuthContext } from '@/contexts/AuthContext'
+import { useEffect } from 'react'
+import { useRouter } from 'expo-router'
+import { Alert } from 'react-native'
 
 export default function AdminLayout() {
-  const { isAuthenticated, isLoading } = useAuthContext();
-  const router = useRouter();
+  const { isAuthenticated, isAdmin, isLoading } = useAuthContext()
+  const router = useRouter()
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
-      router.replace('/login');
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        router.replace('/(tabs)/account')
+      } else if (!isAdmin) {
+        Alert.alert(
+          'Accès refusé',
+          "Vous n'avez pas les droits d'administrateur nécessaires.",
+          [{ text: 'OK', onPress: () => router.replace('/(tabs)') }],
+        )
+      }
     }
-  }, [isAuthenticated, isLoading]);
+  }, [isAuthenticated, isAdmin, isLoading])
 
-  if (isLoading || !isAuthenticated) {
-    return null;
+  if (isLoading || !isAuthenticated || !isAdmin) {
+    return null
   }
 
   return (
@@ -72,5 +81,5 @@ export default function AdminLayout() {
         }}
       />
     </Stack>
-  );
+  )
 }

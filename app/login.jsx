@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import { useRouter } from 'expo-router'
 
-export default function IndexRedirect() {
+export default function LoginScreen() {
   const router = useRouter()
 
   useEffect(() => {
-    // Redirige automatiquement vers la page d'accueil front
-    router.replace('/(tabs)/index')
+    // Redirect to account screen
+    router.replace('/(tabs)/account')
   }, [])
 
   return null

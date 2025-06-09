@@ -10,7 +10,6 @@ import Hero from '@/components/Home/Hero/Hero'
 import Welcome from '@/components/Home/Welcome/Welcome'
 import HighLight from '@/components/Home/HighLight/HighLight'
 import Footer from '@/components/Home/Footer/Footer'
-import AdminButton from '@/components/Home/AdminButton/AdminButton'
 import { COLORS, SIZES } from '@/constants/theme'
 
 export default function HomeScreen() {
@@ -29,7 +28,6 @@ export default function HomeScreen() {
           <Footer />
         </View>
       </ScrollView>
-      <AdminButton />
     </>
   )
 }

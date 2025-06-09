@@ -12,7 +12,8 @@ const COLORS = {
   darkvanilla: '#CCBBAA',
   spanishGray: '#999999',
   brightGray: '#E8F1F2',
-  gainsboro: '#D1E3E5'
+  gainsboro: '#D1E3E5',
+  red: '#f44336',
 }
 
 const SIZES = {

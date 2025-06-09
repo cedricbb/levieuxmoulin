@@ -10,7 +10,7 @@ export default function AuthLayout() {
 
   useEffect(() => {
     if (!isLoading && segments[0] === '(admin)' && !isAuthenticated) {
-      router.replace('/login')
+      router.replace('/(tabs)/account')
     }
   }, [isAuthenticated, segments, isLoading])
 
