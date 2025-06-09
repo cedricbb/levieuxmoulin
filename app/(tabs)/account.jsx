@@ -23,14 +23,10 @@ export default function AccountScreen() {
     return (
       <KeyboardAvoidingView
         style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
       >
-        <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-        >
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.tabContainer}>
             <TouchableOpacity
               style={[
@@ -66,19 +62,17 @@ export default function AccountScreen() {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.formWrapper}>
-            {loginType === 'admin' ? (
-              <>
-                <Text style={styles.title}>Connexion Administrateur</Text>
-                <AdminForm />
-              </>
-            ) : (
-              <>
-                <Text style={styles.title}>Connexion Utilisateur</Text>
-                <AdminForm />
-              </>
-            )}
-          </View>
+          {loginType === 'admin' ? (
+            <>
+              <Text style={styles.title}>Connexion Administrateur</Text>
+              <AdminForm />
+            </>
+          ) : (
+            <>
+              <Text style={styles.title}>Connexion Utilisateur</Text>
+              <AdminForm />
+            </>
+          )}
         </ScrollView>
       </KeyboardAvoidingView>
     )
@@ -121,28 +115,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20,
-  },
-  headerContainer: {
-    width: '100%',
-    alignItems: 'flex-start',
-    marginBottom: 20,
-  },
-  backButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    backgroundColor: COLORS.white,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: COLORS.primary,
-  },
-  backButtonText: {
-    marginLeft: 8,
-    color: COLORS.primary,
-    fontWeight: '500',
-    fontSize: 16,
   },
   tabContainer: {
     flexDirection: 'row',
@@ -166,11 +138,6 @@ const styles = StyleSheet.create({
   },
   activeTabButtonText: {
     color: COLORS.white,
-  },
-  formWrapper: {
-    width: '100%',
-    alignItems: 'center',
-    minHeight: 300, // Hauteur minimale pour éviter les sauts
   },
   title: {
     fontSize: 24,

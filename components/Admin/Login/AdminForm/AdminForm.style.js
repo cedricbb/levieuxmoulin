@@ -3,6 +3,7 @@ import { COLORS, SIZES } from '@/constants/theme'
 
 const styles = StyleSheet.create({
   formContainer: {
+    width: '100%',
     backgroundColor: COLORS.white,
     borderRadius: SIZES.xs,
     padding: SIZES.lg,
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
     marginBottom: SIZES.xxs,
   },
   input: {
+    width: '100%',
     backgroundColor: COLORS.cultured,
     borderRadius: SIZES.xxs,
     paddingHorizontal: SIZES.sm,
@@ -28,10 +30,12 @@ const styles = StyleSheet.create({
     fontSize: SIZES.sm,
   },
   passwordContainer: {
+    width: '100%',
     position: 'relative',
     marginBottom: SIZES.lg,
   },
   passwordInput: {
+    width: '100%',
     backgroundColor: COLORS.cultured,
     borderRadius: SIZES.xxs,
     paddingHorizontal: SIZES.sm,

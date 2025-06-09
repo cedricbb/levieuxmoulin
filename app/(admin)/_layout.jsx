@@ -3,6 +3,8 @@ import { useAuthContext } from '@/contexts/AuthContext'
 import { useEffect } from 'react'
 import { useRouter } from 'expo-router'
 import { Alert } from 'react-native'
+import { ArrowLeft } from 'lucide-react-native'
+import { TouchableOpacity } from 'react-native'
 
 export default function AdminLayout() {
   const { isAuthenticated, isAdmin, isLoading } = useAuthContext()
@@ -43,6 +45,11 @@ export default function AdminLayout() {
         options={{
           title: 'Administration',
           headerShown: true,
+          headerLeft: ({ tintColor }) => (
+            <TouchableOpacity onPress={() => router.replace('/(tabs)')}>
+              <ArrowLeft size={24} color={tintColor || '#FFF'} />
+            </TouchableOpacity>
+          ),
         }}
       />
       <Stack.Screen
