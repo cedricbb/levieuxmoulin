@@ -1,11 +1,12 @@
 import React, { createContext, useState, useEffect, useContext } from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useRouter, useSegments } from 'expo-router'
+import { supabase } from '@/lib/supabase'
+import { useRouter } from 'expo-router'
 
 const AuthContext = createContext({
   isAuthenticated: false,
   isLoading: true,
   isAdmin: false,
+  user: null,
   login: async () => {},
   logout: async () => {},
 })
@@ -16,62 +17,103 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [user, setUser] = useState(null)
   const router = useRouter()
-  const segments = useSegments()
 
+  // Vérifie la session au chargement
   useEffect(() => {
-    const checkAuthStatus = async () => {
-      try {
-        const token = await AsyncStorage.getItem('auth_token')
-        const userType = await AsyncStorage.getItem('user_type')
-        setIsAuthenticated(!!token)
-        setIsAdmin(userType === 'admin')
-      } catch (error) {
-        console.error('Error checking auth status:', error)
-      } finally {
-        setIsLoading(false)
+    const getSession = async () => {
+      setIsLoading(true)
+      const { data, error } = await supabase.auth.getSession()
+      if (data?.session?.user) {
+        setUser(data.session.user)
+        setIsAuthenticated(true)
+        // Récupère le rôle dans la table profiles
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', data.session.user.id)
+          .single()
+        setIsAdmin(profile?.role === "admin")
+      } else {
+        setUser(null)
+        setIsAuthenticated(false)
+        setIsAdmin(false)
       }
+      setIsLoading(false)
     }
-
-    checkAuthStatus()
+    getSession()
+    // Écoute les changements de session
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser(session.user)
+        setIsAuthenticated(true)
+        supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', session.user.id)
+          .single()
+          .then(({ data: profile }) => setIsAdmin(profile?.role === "admin"))
+      } else {
+        setUser(null)
+        setIsAuthenticated(false)
+        setIsAdmin(false)
+      }
+    })
+    return () => listener?.subscription.unsubscribe()
   }, [])
 
+  // Fonction de login
   const login = async (email, password) => {
-    // Admin authentication
-    if (email === 'admin@levieuxmoulin.fr' && password === 'admin123') {
-      await AsyncStorage.setItem('auth_token', 'admin_token')
-      await AsyncStorage.setItem('user_type', 'admin')
-      setIsAuthenticated(true)
-      setIsAdmin(true)
+    setIsLoading(true)
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) {
+      setIsLoading(false)
+      throw error
+    }
+    setUser(data.user)
+    setIsAuthenticated(true)
+    // Récupère le rôle
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', data.user.id)
+      .single()
+    setIsAdmin(profile?.role === 'admin')
+    setIsLoading(false)
+    // Redirige selon le rôle
+    if (profile?.role === 'admin') {
       router.replace('/(admin)')
-      return
-    }
-
-    // Regular user authentication
-    if (email && password) {
-      // In a real app, you would validate against a backend
-      // For this example, we'll accept any non-empty email/password
-      await AsyncStorage.setItem('auth_token', 'user_token')
-      await AsyncStorage.setItem('user_type', 'user')
-      setIsAuthenticated(true)
-      setIsAdmin(false)
+    } else {
       router.replace('/(tabs)')
-      return
     }
-
-    throw new Error('Invalid credentials')
   }
 
+  // Fonction de logout
   const logout = async () => {
-    await AsyncStorage.removeItem('auth_token')
-    await AsyncStorage.removeItem('user_type')
+    await supabase.auth.signOut()
+    setUser(null)
     setIsAuthenticated(false)
     setIsAdmin(false)
     router.replace('/(tabs)')
   }
 
+  // Fonction de signup
+  const signup = async (email, password) => {
+    setIsLoading(true)
+    const { data, error } = await supabase.auth.signUp({ email, password })
+    if (error) {
+      setIsLoading(false)
+      throw error
+    }
+    setUser(data.user)
+    setIsAuthenticated(true)
+    setIsLoading(false)
+    router.replace('/(tabs)')
+  }
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, isAdmin, isLoading, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, isAdmin, isLoading, user, login, logout, signup }}>
       {children}
     </AuthContext.Provider>
   )
