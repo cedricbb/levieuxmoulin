@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import { useContentContext } from '@/contexts/ContentContext'
 
 // Define content sections
-type ContentSection = 'home' | 'gite' | 'activities' | 'gallery' | 'infos'
+const ContentSection = ['home', 'gite', 'activities', 'gallery', 'infos']
 
-export function useContent(section: ContentSection) {
+export function useContent(section) {
   const { getContent, updateContent } = useContentContext()
-  const [content, setContent] = useState<any>(null)
+  const [content, setContent] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState(null)
 
   const fetchContent = async () => {
     setIsLoading(true)
@@ -29,7 +29,7 @@ export function useContent(section: ContentSection) {
     fetchContent()
   }, [section])
 
-  const updateSectionContent = async (data: any) => {
+  const updateSectionContent = async (data) => {
     try {
       await updateContent(section, data)
       setContent(data)

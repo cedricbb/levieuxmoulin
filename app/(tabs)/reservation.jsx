@@ -5,13 +5,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
-  Platform,
 } from 'react-native'
 import { WebView } from 'react-native-webview'
-import type {
-  WebView as WebViewType,
-  WebViewNavigation,
-} from 'react-native-webview'
+import { WebViewNavigation } from 'react-native-webview'
 import { ChevronLeft } from 'lucide-react-native'
 
 // This is a mock Le Bon Coin URL - in a real implementation this would be the actual listing URL
@@ -19,7 +15,7 @@ const BOOKING_URL = 'https://www.leboncoin.fr'
 
 export default function ReservationScreen() {
   const [isLoading, setIsLoading] = useState(true)
-  const webViewRef = useRef<WebViewType>(null)
+  const webViewRef = useRef(null)
   const [canGoBack, setCanGoBack] = useState(false)
 
   const handleBackPress = () => {
@@ -30,7 +26,7 @@ export default function ReservationScreen() {
     return false
   }
 
-  const onNavigationStateChange = useCallback((navState: WebViewNavigation) => {
+  const onNavigationStateChange = useCallback((navState) => {
     setCanGoBack(navState.canGoBack)
   }, [])
 

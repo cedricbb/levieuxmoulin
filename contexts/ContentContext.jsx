@@ -2,29 +2,19 @@ import React, { createContext, useState, useContext } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 // Define content sections
-type ContentSection = 'home' | 'gite' | 'activities' | 'gallery' | 'infos'
+const ContentSection = 'home' | 'gite' | 'activities' | 'gallery' | 'infos'
 
-interface ContentContextType {
-  getContent: (section: ContentSection) => Promise<any>
-  updateContent: (section: ContentSection, data: any) => Promise<void>
-}
-
-const ContentContext = createContext<ContentContextType>({
-  getContent: async () => ({}),
-  updateContent: async () => {},
-})
+const ContentContext = createContext()
 
 export const useContentContext = () => useContext(ContentContext)
 
 export const ContentProvider = ({
   children,
-}: {
-  children: React.ReactNode
 }) => {
   // Helper to generate AsyncStorage key for a section
-  const getSectionKey = (section: ContentSection) => `content_${section}`
+  const getSectionKey = (section) => `content_${section}`
 
-  const getContent = async (section: ContentSection) => {
+  const getContent = async (section) => {
     try {
       const storedContent = await AsyncStorage.getItem(getSectionKey(section))
       return storedContent ? JSON.parse(storedContent) : null
@@ -34,7 +24,7 @@ export const ContentProvider = ({
     }
   }
 
-  const updateContent = async (section: ContentSection, data: any) => {
+  const updateContent = async (section, data) => {
     try {
       await AsyncStorage.setItem(getSectionKey(section), JSON.stringify(data))
     } catch (error) {

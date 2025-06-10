@@ -50,7 +50,7 @@ export default function EditHomeScreen() {
   if (isLoading) return <LoadingScreen />
   if (error) return <ErrorScreen message={error} onRetry={() => {}} />
 
-  const updateHighlight = (index: number, field: string, value: string) => {
+  const updateHighlight = (index, field, value) => {
     const updatedHighlights = [...highlights]
     updatedHighlights[index] = {
       ...updatedHighlights[index],
